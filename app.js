@@ -9,7 +9,7 @@ const errorHandler = require('./middleware/errorMiddleware');
 
 // Routes
 const authRoutes = require('./routes/authRoutes');
-const schoolRoutes = require('./routes/schoolRoutes');
+const schoolRoutes = require('./routes/schoolRoutes');  
 const teamRoutes = require('./routes/teamRoutes');
 const playerRoutes = require('./routes/playerRoutes');
 const sportRoutes = require('./routes/sportRoutes');

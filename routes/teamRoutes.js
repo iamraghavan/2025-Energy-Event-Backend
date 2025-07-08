@@ -16,6 +16,6 @@ router.get('/mongo/:id', getTeamById);
 router.get('/id/:teamId', getTeamByTeamId);
 router.get('/sport/:sportId', getTeamsBySportId);
 
-router.get('/check-jersey', checkJerseyNumber);
+// router.get('/check-jersey', checkJerseyNumber);
 
 module.exports = router;
