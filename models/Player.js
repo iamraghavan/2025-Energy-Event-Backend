@@ -32,6 +32,11 @@ const playerSchema = new mongoose.Schema(
     jerseyNumber: {
       type: String,
       maxlength: 4
+    },
+    role: {
+      type: String,
+      enum: ['player', 'substitute'],
+      default: 'player'
     }
   },
   {

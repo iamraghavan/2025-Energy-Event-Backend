@@ -89,7 +89,7 @@ exports.getTeamByTeamId = async (req, res) => {
   }
 };
 
-// ✅ Get all teams for a given sportId
+// Get all teams for a given sportId
 exports.getTeamsBySportId = async (req, res) => {
   try {
     // 1️⃣ Find the sport by custom sportId
@@ -133,7 +133,7 @@ exports.checkJerseyNumber = async (req, res) => {
     res.json({ available: true, message: 'Jersey number is available' });
 
   } catch (error) {
-    console.error('[checkJerseyNumber]', error); // ✅ Always log unexpected errors
+    console.error('[checkJerseyNumber]', error); // Always log unexpected errors
     res.status(500).json({ message: error.message });
   }
 };
