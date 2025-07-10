@@ -6,7 +6,7 @@ const kabaddiMatchSchema = new mongoose.Schema({
   teamB: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', required: true },
   court: { type: String, required: true },
   referee: { type: String },
-  status: { type: String, enum: ['Scheduled', 'Live', 'Completed'], default: 'Scheduled' },
+  status: { type: String, enum: ['Scheduled', 'Live', 'Completed', 'Abandoned'], default: 'Scheduled' },
   score: {
     teamA: { type: Number, default: 0 },
     teamB: { type: Number, default: 0 }

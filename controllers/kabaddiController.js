@@ -8,7 +8,7 @@ const Player = require('../models/Player');
 //  Create new Kabaddi match
 exports.createKabaddiMatch = async (req, res) => {
   try {
-    const { sportId, teamAId, teamBId, court, referee } = req.body;
+    const { sportId, teamAId, teamBId, court, referee, startTime } = req.body;
 
     const sport = await Sport.findOne({ sportId });
     if (!sport) return res.status(404).json({ message: 'Sport not found' });
@@ -25,7 +25,8 @@ exports.createKabaddiMatch = async (req, res) => {
       teamB: teamB._id,
       court,
       referee,
-      status: 'Scheduled'
+      status: 'Scheduled',
+      startTime
     });
 
     res.status(201).json({ success: true, data: match });
