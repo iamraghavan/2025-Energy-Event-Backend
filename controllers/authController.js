@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-// ✅ Create Super Admin (one-time)
+// ✅ Create SuperAdmin (public - only once)
 exports.createSuperAdmin = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -10,13 +10,9 @@ exports.createSuperAdmin = async (req, res) => {
       return res.status(409).json({ message: 'Username already exists' });
     }
 
-    const user = await User.create({
-      username,
-      password,
-      role: 'superadmin'
-    });
+    const user = await User.create({ username, password, role: 'superadmin' });
 
-    return res.status(201).json({
+    res.status(201).json({
       success: true,
       data: {
         id: user._id,
@@ -27,28 +23,23 @@ exports.createSuperAdmin = async (req, res) => {
     });
   } catch (err) {
     console.error('[createSuperAdmin]', err);
-    return res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-// ✅ Create Level 2 Admin (requires SuperAdmin API key)
+// ✅ Create Level 2 Admin (requires valid API key)
 exports.createLevel2Admin = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // Check unique
     const exists = await User.findOne({ username });
     if (exists) {
       return res.status(409).json({ message: 'Username already exists' });
     }
 
-    const user = await User.create({
-      username,
-      password,
-      role: 'lv2admin'
-    });
+    const user = await User.create({ username, password, role: 'lv2admin' });
 
-    return res.status(201).json({
+    res.status(201).json({
       success: true,
       data: {
         id: user._id,
@@ -59,11 +50,11 @@ exports.createLevel2Admin = async (req, res) => {
     });
   } catch (err) {
     console.error('[createLevel2Admin]', err);
-    return res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-// ✅ Create Scorekeeper (requires admin, but no API key)
+// ✅ Create Scorekeeper (requires valid API key)
 exports.createScorekeeper = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -73,27 +64,24 @@ exports.createScorekeeper = async (req, res) => {
       return res.status(409).json({ message: 'Username already exists' });
     }
 
-    const user = await User.create({
-      username,
-      password,
-      role: 'scorekeeper'
-    });
+    const user = await User.create({ username, password, role: 'scorekeeper' });
 
-    return res.status(201).json({
+    res.status(201).json({
       success: true,
       data: {
         id: user._id,
         username: user.username,
         role: user.role
+        // Note: No API key for scorekeeper
       }
     });
   } catch (err) {
     console.error('[createScorekeeper]', err);
-    return res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-// ✅ Login for all
+// ✅ Login for all roles
 exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -104,7 +92,7 @@ exports.login = async (req, res) => {
     const isMatch = await user.matchPassword(password);
     if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
 
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
       data: {
         id: user._id,
@@ -115,6 +103,6 @@ exports.login = async (req, res) => {
     });
   } catch (err) {
     console.error('[login]', err);
-    return res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 };

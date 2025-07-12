@@ -6,17 +6,15 @@ const {
   login
 } = require('../controllers/authController');
 
-const apiKeyAuth = require('../middleware/apiKeyAuth'); // reuse your apiKeyAuth
+const apiKeyAuth = require('../middleware/apiKeyAuth');
 
 const router = express.Router();
 
-// Public: login
+// Public routes
 router.post('/login', login);
+router.post('/superadmin', apiKeyAuth, createSuperAdmin);
 
-// Public: create SuperAdmin (one-time)
-router.post('/superadmin', createSuperAdmin);
-
-// Requires API key: Level2Admin and Scorekeeper creation
+// Protected routes (must send valid SuperAdmin or Level2Admin API key)
 router.post('/lv2admin', apiKeyAuth, createLevel2Admin);
 router.post('/scorekeeper', apiKeyAuth, createScorekeeper);
 

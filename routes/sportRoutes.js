@@ -2,18 +2,15 @@ const express = require('express');
 const {
   getAllSports,
   getSportById,
-  getSportBySportId
+  getSportBySportId,
+  updateSportDetails
 } = require('../controllers/sportController');
 
 const router = express.Router();
 
-// Get all sports
 router.get('/', getAllSports);
-
-// Get sport by Mongo _id
 router.get('/mongo/:id', getSportById);
-
-// Get sport by custom sportId
 router.get('/id/:sportId', getSportBySportId);
+router.patch('/mongo/:id', updateSportDetails); // For updating details
 
 module.exports = router;

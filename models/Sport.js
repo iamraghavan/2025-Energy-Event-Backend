@@ -10,7 +10,8 @@ const sportSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      required: true
+      required: true,
+      trim: true
     },
     type: {
       type: String,
@@ -22,11 +23,13 @@ const sportSchema = new mongoose.Schema(
       enum: ['M', 'W', 'M/W'],
       required: true
     },
-    athleticsEvents: [String] // Optional: For Athletics only
+    details: {
+      type: String,
+      trim: true
+    },
+    athleticsEvents: [String]
   },
-  {
-    timestamps: true
-  }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model('Sport', sportSchema);
