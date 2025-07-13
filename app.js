@@ -11,6 +11,9 @@ const authRoutes = require('./routes/authRoutes');
 const sportRoutes = require('./routes/sportRoutes');
 const schoolRoutes = require('./routes/schoolRoutes');
 
+const teamRoutes = require('./routes/teamRoutes');
+
+
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
@@ -35,7 +38,7 @@ app.use(rateLimit);
 
 app.use('/api/sports', sportRoutes);
 app.use('/api/schools', schoolRoutes);
-
+app.use('/api/teams', teamRoutes);
 
 app.use(errorHandler);
 

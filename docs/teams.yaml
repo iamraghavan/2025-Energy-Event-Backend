@@ -1,0 +1,248 @@
+openapi: 3.0.0
+info:
+  title: Teams API
+  version: 1.0.0
+  description: API for managing teams, with full CRUD, HEAD & OPTIONS support
+
+servers:
+  - url: /api
+    description: Base path (express mounts at /api/teams)
+
+tags:
+  - name: Teams
+    description: Endpoints related to team management
+
+paths:
+  /teams:
+    get:
+      summary: Get all teams
+      tags:
+        - Teams
+      responses:
+        "200":
+          description: A list of all teams
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  count:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Team"
+    post:
+      summary: Create a new team
+      tags:
+        - Teams
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamInput"
+      responses:
+        "201":
+          description: Team created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamResponse"
+        "400":
+          description: Invalid request – missing fields
+        "404":
+          description: Sport or School not found
+        "500":
+          description: Internal server error
+    options:
+      summary: Describe supported methods
+      tags:
+        - Teams
+      responses:
+        "204":
+          description: No content
+          headers:
+            Allow:
+              schema:
+                type: string
+              description: Allowed HTTP methods
+
+  /teams/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: MongoDB ObjectId of the team
+        schema:
+          type: string
+    get:
+      summary: Get a team by its ID
+      tags:
+        - Teams
+      responses:
+        "200":
+          description: Team found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamResponse"
+        "404":
+          description: Team not found
+        "500":
+          description: Internal server error
+    put:
+      summary: Replace a team by its ID
+      tags:
+        - Teams
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamInput"
+      responses:
+        "200":
+          description: Team updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamResponse"
+        "400":
+          description: Invalid request
+        "404":
+          description: Team not found
+        "500":
+          description: Internal server error
+    patch:
+      summary: Update (partial) a team by its ID
+      tags:
+        - Teams
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamUpdate"
+      responses:
+        "200":
+          description: Team updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamResponse"
+        "400":
+          description: Invalid request
+        "404":
+          description: Team not found
+        "500":
+          description: Internal server error
+    delete:
+      summary: Delete a team by its ID
+      tags:
+        - Teams
+      responses:
+        "200":
+          description: Team deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        "404":
+          description: Team not found
+        "500":
+          description: Internal server error
+    head:
+      summary: Check if a team exists
+      tags:
+        - Teams
+      responses:
+        "200":
+          description: Team exists
+        "404":
+          description: Team not found
+        "500":
+          description: Internal server error
+
+components:
+  schemas:
+    Team:
+      type: object
+      properties:
+        _id:
+          type: string
+        teamId:
+          type: string
+          example: "48392"
+        name:
+          type: string
+        gender:
+          type: string
+          enum: ["M", "W"]
+        sport:
+          $ref: "#/components/schemas/Ref"
+        school:
+          $ref: "#/components/schemas/Ref"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    Ref:
+      type: object
+      properties:
+        _id:
+          type: string
+        sportId:
+          type: string
+        name:
+          type: string
+      description: Populated reference (Sport or School)
+
+    TeamInput:
+      type: object
+      required:
+        - name
+        - gender
+        - sportId
+        - schoolId
+      properties:
+        name:
+          type: string
+        gender:
+          type: string
+          enum: ["M", "W"]
+        sportId:
+          type: string
+        schoolId:
+          type: string
+
+    TeamUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        gender:
+          type: string
+          enum: ["M", "W"]
+        sportId:
+          type: string
+        schoolId:
+          type: string
+
+    TeamResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/Team"

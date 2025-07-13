@@ -5,12 +5,12 @@ const options = {
     openapi: '3.0.0',
     info: {
       title: 'Energy 2025 Sports Meet API',
-      version: '1.0.0',
+      version: '1.0.0v',
       description: 'Versioned REST API for Schools, Sports, Auth, Matches, with API Key Auth'
     },
     servers: [
       {
-        url: 'http://localhost:8000/api/v1'
+        url: 'http://localhost:8000/api'
       }
     ],
     components: {

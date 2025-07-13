@@ -1,0 +1,238 @@
+openapi: 3.0.0
+info:
+  title: School API
+  version: 1.0.0
+  description: API for managing schools with full CRUD support.
+
+servers:
+  - url: /api
+    description: Base API server
+
+tags:
+  - name: Schools
+    description: School resource operations
+
+paths:
+  /schools:
+    post:
+      summary: Create a new school
+      tags:
+        - Schools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SchoolInput"
+      responses:
+        "201":
+          description: School created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolResponse"
+        "400":
+          description: Missing required fields
+        "500":
+          description: Internal server error
+
+    get:
+      summary: Get all schools
+      tags:
+        - Schools
+      responses:
+        "200":
+          description: List of schools
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  count:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/School"
+        "500":
+          description: Internal server error
+
+  /schools/id/{schoolId}:
+    get:
+      summary: Get a school by schoolId
+      tags:
+        - Schools
+      parameters:
+        - name: schoolId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: School found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolResponse"
+        "404":
+          description: School not found
+        "500":
+          description: Internal server error
+
+  /schools/mongo/{id}:
+    get:
+      summary: Get a school by MongoDB ID
+      tags:
+        - Schools
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: School found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolResponse"
+        "404":
+          description: School not found
+        "500":
+          description: Internal server error
+
+    patch:
+      summary: Partially update a school by Mongo ID
+      tags:
+        - Schools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SchoolPatch"
+      responses:
+        "200":
+          description: School updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolResponse"
+        "404":
+          description: School not found
+        "500":
+          description: Internal server error
+
+    put:
+      summary: Replace a school by Mongo ID
+      tags:
+        - Schools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SchoolInputWithId"
+      responses:
+        "200":
+          description: School replaced
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolResponse"
+        "400":
+          description: Validation error
+        "404":
+          description: School not found
+        "500":
+          description: Internal server error
+
+    delete:
+      summary: Delete a school by Mongo ID
+      tags:
+        - Schools
+      responses:
+        "200":
+          description: School deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                    example: School deleted successfully
+        "404":
+          description: School not found
+        "500":
+          description: Internal server error
+
+components:
+  schemas:
+    School:
+      type: object
+      properties:
+        _id:
+          type: string
+        schoolId:
+          type: string
+          example: "45678"
+        name:
+          type: string
+          example: Green Valley High
+        address:
+          type: string
+          example: 123 Main St, Springfield
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    SchoolInput:
+      type: object
+      required:
+        - name
+        - address
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+
+    SchoolInputWithId:
+      type: object
+      required:
+        - schoolId
+        - name
+        - address
+      properties:
+        schoolId:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+
+    SchoolPatch:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+
+    SchoolResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/School"

@@ -7,7 +7,7 @@ info:
     security, rate limiting, and Swagger UI documentation.
 
 servers:
-  - url: /api/v1
+  - url: /api
     description: Base path for API version 1
 
 tags:
