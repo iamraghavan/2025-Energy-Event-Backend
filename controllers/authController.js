@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-// ✅ Create SuperAdmin (public - only once)
+//   Create SuperAdmin (public - only once)
 exports.createSuperAdmin = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -27,7 +27,7 @@ exports.createSuperAdmin = async (req, res) => {
   }
 };
 
-// ✅ Create Level 2 Admin (requires valid API key)
+//   Create Level 2 Admin (requires valid API key)
 exports.createLevel2Admin = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -54,7 +54,7 @@ exports.createLevel2Admin = async (req, res) => {
   }
 };
 
-// ✅ Create Scorekeeper (requires valid API key)
+//   Create Scorekeeper (requires valid API key)
 exports.createScorekeeper = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -81,7 +81,7 @@ exports.createScorekeeper = async (req, res) => {
   }
 };
 
-// ✅ Login for all roles
+//   Login for all roles
 exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;

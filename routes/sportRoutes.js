@@ -3,10 +3,15 @@ const {
   getAllSports,
   getSportById,
   getSportBySportId,
-  updateSportDetails
+  updateSportDetails,
+  createSport
 } = require('../controllers/sportController');
 
 const router = express.Router();
+
+
+router.post('/', createSport);
+
 
 router.get('/', getAllSports);
 router.get('/mongo/:id', getSportById);

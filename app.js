@@ -9,6 +9,11 @@ const errorHandler = require('./middleware/errorMiddleware');
 //  Core routes
 const authRoutes = require('./routes/authRoutes');
 const sportRoutes = require('./routes/sportRoutes');
+const schoolRoutes = require('./routes/schoolRoutes');
+
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
 
 
 const app = express();
@@ -19,6 +24,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use(morgan('dev'));
 
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //  Secure
 app.use(apiKeyAuth);
 
@@ -28,7 +34,7 @@ app.use(rateLimit);
 
 
 app.use('/api/sports', sportRoutes);
-
+app.use('/api/schools', schoolRoutes);
 
 
 app.use(errorHandler);

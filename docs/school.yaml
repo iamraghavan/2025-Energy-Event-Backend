@@ -1,0 +1,166 @@
+openapi: 3.0.0
+info:
+  title: Schools API
+  version: 1.0.0
+  description: API for managing school records using custom `schoolId` and MongoDB `_id`.
+
+servers:
+  - url: /api/v1
+    description: Base path for API v1
+
+tags:
+  - name: Schools
+    description: Endpoints for managing schools
+
+paths:
+  /schools:
+    post:
+      summary: Create a new school
+      tags:
+        - Schools
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SchoolInput"
+      responses:
+        "201":
+          description: School successfully created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolResponse"
+        "400":
+          description: Missing required fields (name, address)
+        "500":
+          description: Internal server error
+
+    get:
+      summary: Get all schools
+      tags:
+        - Schools
+      security:
+        - ApiKeyAuth: []
+      responses:
+        "200":
+          description: A list of all schools
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  count:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/School"
+        "500":
+          description: Internal server error
+
+  /schools/mongo/{id}:
+    get:
+      summary: Get a school by MongoDB ObjectId
+      tags:
+        - Schools
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: MongoDB ObjectId of the school
+          schema:
+            type: string
+      responses:
+        "200":
+          description: School found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolResponse"
+        "404":
+          description: School not found
+        "500":
+          description: Internal server error
+
+  /schools/id/{schoolId}:
+    get:
+      summary: Get a school by custom schoolId
+      tags:
+        - Schools
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: schoolId
+          in: path
+          required: true
+          description: Unique school identifier (5-digit)
+          schema:
+            type: string
+      responses:
+        "200":
+          description: School found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolResponse"
+        "404":
+          description: School not found
+        "500":
+          description: Internal server error
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  schemas:
+    School:
+      type: object
+      properties:
+        _id:
+          type: string
+        schoolId:
+          type: string
+          example: "58327"
+        name:
+          type: string
+          example: "Greenwood High School"
+        address:
+          type: string
+          example: "123 Elm Street, Springfield"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    SchoolInput:
+      type: object
+      required:
+        - name
+        - address
+      properties:
+        name:
+          type: string
+          example: "Greenwood High School"
+        address:
+          type: string
+          example: "123 Elm Street, Springfield"
+
+    SchoolResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/School"

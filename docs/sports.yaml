@@ -1,0 +1,254 @@
+openapi: 3.0.0
+info:
+  title: Sports API
+  version: 1.0.0
+  description: |
+    API for managing sports (CRUD operations), grouping by gender, with
+    security, rate limiting, and Swagger UI documentation.
+
+servers:
+  - url: /api/v1
+    description: Base path for API version 1
+
+tags:
+  - name: Sports
+    description: Endpoints for sports management
+
+paths:
+  /sports:
+    post:
+      summary: Create a new sport
+      tags:
+        - Sports
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SportInput"
+      responses:
+        "201":
+          description: Sport successfully created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SportResponse"
+        "400":
+          description: Bad request – missing required fields
+        "409":
+          description: Conflict – sportId already exists
+        "500":
+          description: Internal server error
+    get:
+      summary: Get all sports grouped by gender
+      tags:
+        - Sports
+      security:
+        - ApiKeyAuth: []
+      responses:
+        "200":
+          description: Sports grouped by gender
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    required:
+                      - menSports
+                      - womenSports
+                    properties:
+                      menSports:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Sport"
+                      womenSports:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Sport"
+        "500":
+          description: Internal server error
+
+  /sports/id/{sportId}:
+    get:
+      summary: Get a sport by custom sportId
+      tags:
+        - Sports
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: sportId
+          in: path
+          description: Custom identifier for the sport
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Sport found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SportResponse"
+        "404":
+          description: Sport not found
+        "500":
+          description: Internal server error
+
+  /sports/mongo/{id}:
+    get:
+      summary: Get a sport by MongoDB ObjectId
+      tags:
+        - Sports
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: MongoDB ObjectId of the sport
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Sport found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SportResponse"
+        "404":
+          description: Sport not found
+        "500":
+          description: Internal server error
+
+    patch:
+      summary: Update sport details by MongoDB ObjectId
+      tags:
+        - Sports
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: MongoDB ObjectId of the sport
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SportUpdate"
+      responses:
+        "200":
+          description: Sport updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SportResponse"
+        "404":
+          description: Sport not found
+        "500":
+          description: Internal server error
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  schemas:
+    Sport:
+      type: object
+      properties:
+        _id:
+          type: string
+        sportId:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          description: Category/type of sport (e.g., individual, team)
+        genderCategory:
+          type: array
+          items:
+            type: string
+            enum: [M, W]
+        details:
+          type: string
+        athleticsEvents:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    SportInput:
+      type: object
+      required:
+        - sportId
+        - name
+        - type
+        - genderCategory
+      properties:
+        sportId:
+          type: string
+          description: Unique custom identifier
+        name:
+          type: string
+        type:
+          type: string
+          description: Sport category/type
+        genderCategory:
+          type: array
+          items:
+            type: string
+            enum: [M, W]
+        details:
+          type: string
+        athleticsEvents:
+          type: array
+          items:
+            type: string
+
+    SportUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        genderCategory:
+          type: array
+          items:
+            type: string
+            enum: [M, W]
+        details:
+          type: string
+        athleticsEvents:
+          type: array
+          items:
+            type: string
+
+    SportResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/Sport"

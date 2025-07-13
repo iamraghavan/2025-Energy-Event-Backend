@@ -10,6 +10,8 @@ const apiKeyAuth = require('../middleware/apiKeyAuth');
 
 const router = express.Router();
 
+
+
 // Public routes
 router.post('/login', login);
 router.post('/superadmin', apiKeyAuth, createSuperAdmin);
