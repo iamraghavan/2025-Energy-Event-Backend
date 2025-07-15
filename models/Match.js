@@ -2,11 +2,19 @@ const mongoose = require('mongoose');
 
 const matchSchema = new mongoose.Schema({
   sport: { type: String, required: true },
-  teamA: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', required: true },
-  teamB: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', required: true },
+
+  teamA: { type: String, required: true }, // your custom teamId
+  teamB: { type: String, required: true },
+
   pointsA: { type: Number, default: 0 },
   pointsB: { type: Number, default: 0 },
+
   scheduledAt: { type: Date, required: true },
+
+  venue: { type: String, required: true },     // e.g., "Main Stadium"
+  courtNumber: { type: String, required: true }, // e.g., "Court 3"
+  refereeName: { type: String, required: true }, // e.g., "Mr. John Doe"
+
   isComplete: { type: Boolean, default: false },
   result: { type: String }
 }, { timestamps: true });
