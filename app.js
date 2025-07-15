@@ -11,6 +11,7 @@ const authRoutes = require('./routes/authRoutes');
 const sportRoutes = require('./routes/sportRoutes');
 const schoolRoutes = require('./routes/schoolRoutes');
 
+const matchRoutes = require('./routes/matchRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 
 
@@ -39,7 +40,7 @@ app.use(rateLimit);
 app.use('/api/sports', sportRoutes);
 app.use('/api/schools', schoolRoutes);
 app.use('/api/teams', teamRoutes);
-
+app.use('/api/matches', matchRoutes);
 app.use(errorHandler);
 
 module.exports = app;
