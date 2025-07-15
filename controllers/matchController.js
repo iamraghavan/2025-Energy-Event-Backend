@@ -45,13 +45,18 @@ exports.replaceMatch = async (req, res, next) => {
 // UPDATE PARTIAL (PATCH)
 exports.updateMatch = async (req, res, next) => {
   try {
-    const match = await Match.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const match = await Match.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
     if (!match) return res.status(404).json({ success: false, message: 'Match not found' });
     res.status(200).json({ success: true, data: match });
   } catch (err) {
     next(err);
   }
 };
+
 
 // DELETE
 exports.deleteMatch = async (req, res, next) => {

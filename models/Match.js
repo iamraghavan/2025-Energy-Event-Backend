@@ -14,7 +14,7 @@ const matchSchema = new mongoose.Schema({
   venue: { type: String, required: true },     // e.g., "Main Stadium"
   courtNumber: { type: String, required: true }, // e.g., "Court 3"
   refereeName: { type: String, required: true }, // e.g., "Mr. John Doe"
-
+  status:{ type: String, enum: ['scheduled', 'live', 'completed'], default: 'scheduled' },
   isComplete: { type: Boolean, default: false },
   result: { type: String }
 }, { timestamps: true });
