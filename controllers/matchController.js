@@ -54,12 +54,19 @@ exports.updateMatch = async (req, res, next) => {
       req.body,
       { new: true, runValidators: true }
     );
-    if (!match) return res.status(404).json({ success: false, message: 'Match not found' });
+
+    if (!match)
+      return res.status(404).json({ success: false, message: 'Match not found' });
+
+    // ✅ Emit real-time update
+    req.app.get('io').emit('scoreUpdate', match); // <---- Emit here
+
     res.status(200).json({ success: true, data: match });
   } catch (err) {
     next(err);
   }
 };
+
 
 // DELETE
 exports.deleteMatch = async (req, res, next) => {
