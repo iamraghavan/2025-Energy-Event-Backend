@@ -13,7 +13,7 @@ exports.createMatch = async (req, res, next) => {
 // READ ALL
 exports.getAllMatches = async (req, res, next) => {
   try {
-    const matches = await Match.find().populate('teamA teamB');
+    const matches = await Match.find();
     res.status(200).json({ success: true, data: matches });
   } catch (err) {
     next(err);
@@ -23,7 +23,7 @@ exports.getAllMatches = async (req, res, next) => {
 // READ ONE
 exports.getMatchById = async (req, res, next) => {
   try {
-    const match = await Match.findById(req.params.id).populate('teamA teamB');
+    const match = await Match.findById(req.params.id);
     if (!match) return res.status(404).json({ success: false, message: 'Match not found' });
     res.status(200).json({ success: true, data: match });
   } catch (err) {
@@ -31,10 +31,14 @@ exports.getMatchById = async (req, res, next) => {
   }
 };
 
-// UPDATE FULL (PUT)
+// FULL REPLACE (PUT)
 exports.replaceMatch = async (req, res, next) => {
   try {
-    const match = await Match.findByIdAndUpdate(req.params.id, req.body, { new: true, overwrite: true, runValidators: true });
+    const match = await Match.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, overwrite: true, runValidators: true }
+    );
     if (!match) return res.status(404).json({ success: false, message: 'Match not found' });
     res.status(200).json({ success: true, data: match });
   } catch (err) {
@@ -42,7 +46,7 @@ exports.replaceMatch = async (req, res, next) => {
   }
 };
 
-// UPDATE PARTIAL (PATCH)
+// PARTIAL UPDATE (PATCH)
 exports.updateMatch = async (req, res, next) => {
   try {
     const match = await Match.findByIdAndUpdate(
@@ -57,7 +61,6 @@ exports.updateMatch = async (req, res, next) => {
   }
 };
 
-
 // DELETE
 exports.deleteMatch = async (req, res, next) => {
   try {
@@ -68,4 +71,3 @@ exports.deleteMatch = async (req, res, next) => {
     next(err);
   }
 };
-

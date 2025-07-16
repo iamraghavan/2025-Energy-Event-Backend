@@ -11,12 +11,21 @@ const matchSchema = new mongoose.Schema({
 
   scheduledAt: { type: Date, required: true },
 
-  venue: { type: String, required: true },     // e.g., "Main Stadium"
-  courtNumber: { type: String, required: true }, // e.g., "Court 3"
-  refereeName: { type: String, required: true }, // e.g., "Mr. John Doe"
-  status:{ type: String, enum: ['scheduled', 'live', 'completed'], default: 'scheduled' },
+  venue: { type: String, required: true },
+  courtNumber: { type: String, required: true },
+  refereeName: { type: String, required: true },
+
+  status: { type: String, enum: ['scheduled', 'live', 'completed'], default: 'scheduled' },
+
   isComplete: { type: Boolean, default: false },
-  result: { type: String }
+
+  result: { type: String },         // e.g., "TeamA Wins"
+  winnerTeam: { type: String },     // store winning teamId if team match
+  winnerPlayer: { type: String },   // optional: for individual sports
+
+  scorekeeperId: { type: String, required: true }, // store who created/managed it
+
+  remarks: { type: String },        // optional notes
 }, { timestamps: true });
 
 module.exports = mongoose.model('Match', matchSchema);
