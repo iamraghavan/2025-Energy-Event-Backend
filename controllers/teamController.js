@@ -21,9 +21,8 @@ exports.createTeam = async (req, res) => {
     let teamId;
     let exists = true;
     while (exists) {
-      teamId = generateID();
-      const check = await Team.findOne({ teamId });
-      if (!check) exists = false;
+      teamId = generateID(); // generates a custom teamId like '50481'
+      exists = await Team.exists({ teamId });
     }
 
     const team = await Team.create({
@@ -44,7 +43,11 @@ exports.createTeam = async (req, res) => {
 // Get all teams
 exports.getAllTeams = async (req, res) => {
   try {
-    const teams = await Team.find().populate('sport').populate('school').sort({ createdAt: -1 });
+    const teams = await Team.find()
+      .populate({ path: 'sport', select: 'sportId name type genderCategory' })
+      .populate({ path: 'school', select: 'schoolId name address' })
+      .sort({ createdAt: -1 });
+
     res.json({ success: true, count: teams.length, data: teams });
   } catch (err) {
     console.error('[getAllTeams]', err);
@@ -55,7 +58,10 @@ exports.getAllTeams = async (req, res) => {
 // Get team by Mongo ID
 exports.getTeamById = async (req, res) => {
   try {
-    const team = await Team.findById(req.params.id).populate('sport').populate('school');
+    const team = await Team.findById(req.params.id)
+      .populate({ path: 'sport', select: 'sportId name type genderCategory' })
+      .populate({ path: 'school', select: 'schoolId name address' });
+
     if (!team) return res.status(404).json({ message: 'Team not found' });
     res.json({ success: true, data: team });
   } catch (err) {
@@ -64,12 +70,16 @@ exports.getTeamById = async (req, res) => {
   }
 };
 
-// Update team by ID (PUT or PATCH)
+// Update team (PUT or PATCH)
 exports.updateTeam = async (req, res) => {
   try {
     const updated = await Team.findByIdAndUpdate(req.params.id, req.body, {
-      new: true, runValidators: true
-    }).populate('sport').populate('school');
+      new: true,
+      runValidators: true
+    })
+      .populate({ path: 'sport', select: 'sportId name type genderCategory' })
+      .populate({ path: 'school', select: 'schoolId name address' });
+
     if (!updated) return res.status(404).json({ message: 'Team not found' });
     res.json({ success: true, data: updated });
   } catch (err) {
@@ -78,7 +88,7 @@ exports.updateTeam = async (req, res) => {
   }
 };
 
-// Delete team by ID
+// Delete team
 exports.deleteTeam = async (req, res) => {
   try {
     const team = await Team.findByIdAndDelete(req.params.id);
@@ -90,7 +100,7 @@ exports.deleteTeam = async (req, res) => {
   }
 };
 
-// HEAD: Check team exists by ID
+// HEAD: Check existence by ID
 exports.headTeam = async (req, res) => {
   try {
     const team = await Team.findById(req.params.id);
@@ -100,4 +110,3 @@ exports.headTeam = async (req, res) => {
     res.sendStatus(500);
   }
 };
-

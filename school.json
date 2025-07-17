@@ -1,0 +1,271 @@
+[
+  {
+    "schoolId": "10001",
+    "name": "Srinivasa Higher Secondary School",
+    "address": "Mayiladuthurai"
+  },
+  {
+    "schoolId": "10002",
+    "name": "National Higher Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10003",
+    "name": "Kaduvangudi Higher Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10004",
+    "name": "Government Higher Secondary School Komal",
+    "address": "Mayiladuthurai"
+  },
+  {
+    "schoolId": "10005",
+    "name": "Chinmaya Vidyalaya",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10006",
+    "name": "Government Higher Secondary School Thittachery",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10007",
+    "name": "Government Girls Higher Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10008",
+    "name": "CSI Higher Secondary School Nagapattinam",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10009",
+    "name": "EGSPJ International School",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10010",
+    "name": "Everest Kenbridge Senior Secondary School",
+    "address": "Mayiladuthurai"
+  },
+  {
+    "schoolId": "10011",
+    "name": "Infant Jesus Matriculation Higher Secondary School Thevur",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10012",
+    "name": "Vivekanandam Vidyashram CBSE Senior Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10013",
+    "name": "Cauvery Public School",
+    "address": "Karaikal"
+  },
+  {
+    "schoolId": "10014",
+    "name": "Ghouthia Higher Secondary School Nagore",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10015",
+    "name": "NLC Boys Higher Secondary School Neyveli",
+    "address": "Cuddalore"
+  },
+  {
+    "schoolId": "10016",
+    "name": "Government Higher Secondary School Team1",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10017",
+    "name": "Government Higher Secondary School Team2",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10018",
+    "name": "Vivekananda Matriculation Higher Secondary School Sirkazhi",
+    "address": "Mayiladuthurai"
+  },
+  {
+    "schoolId": "10019",
+    "name": "Government Higher Secondary School Thirupoondi",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10020",
+    "name": "Sri Lalithaambiga Matriculation Higher Secondary School Poonthotam",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10021",
+    "name": "Government Higher Secondary School Kurukkathi",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10022",
+    "name": "Vaduvur Government Aided Higher Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10023",
+    "name": "Alagu Jothi Academy",
+    "address": "Mayiladuthurai"
+  },
+  { "schoolId": "10024", "name": "Peralam", "address": "Thiruvarur" },
+  {
+    "schoolId": "10025",
+    "name": "V.S. Boys Government Aided Higher Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10026",
+    "name": "RVS Bharat Matriculation Higher Secondary School",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10027",
+    "name": "Gurugnana Sambandar Mission Matriculation Higher Secondary School",
+    "address": "Mayiladuthurai"
+  },
+  {
+    "schoolId": "10028",
+    "name": "Al-Aman Crescent Matriculation Higher Secondary School",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10029",
+    "name": "Government Higher Secondary School",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10030",
+    "name": "Anjugam Muthuvelar Higher Secondary School",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10031",
+    "name": "Sri Sankara Matriculation Higher Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10032",
+    "name": "Servite English High School",
+    "address": "Karaikal"
+  },
+  {
+    "schoolId": "10033",
+    "name": "Government Higher Secondary School Suranur",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10034",
+    "name": "Government Higher Secondary School Peralam",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10035",
+    "name": "St Antony’s Matriculation Higher Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10036",
+    "name": "Victory Higher Secondary School Panjanithikulam West",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10037",
+    "name": "Saradhambal Vidyashram Matriculation Higher Secondary School",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10038",
+    "name": "Adharsh Matriculation Higher Secondary School",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10039",
+    "name": "Veludayar Higher Secondary School",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10040",
+    "name": "Janaki Anni Government Higher Secondary School Alathambadi",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10041",
+    "name": "Government Higher Secondary School Thagattur",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10042",
+    "name": "Natarajan Dhamayanthi High School",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10043",
+    "name": "Don Bosco Higher Secondary School",
+    "address": "Karaikal"
+  },
+  {
+    "schoolId": "10044",
+    "name": "Thamarai International School",
+    "address": "Thanjavur"
+  },
+  {
+    "schoolId": "10045",
+    "name": "Government Higher Secondary School Umbalacherry",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10046",
+    "name": "Government Higher Secondary School Pragramam",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10047",
+    "name": "RMASPGHS Karaikalmedu",
+    "address": "Karaikal"
+  },
+  {
+    "schoolId": "10048",
+    "name": "Regional Perfect Higher Secondary School Nedungadu",
+    "address": "Karaikal"
+  },
+  { "schoolId": "10049", "name": "TPGHSS Kovilpathu", "address": "Karaikal" },
+  { "schoolId": "10050", "name": "SMHHSS", "address": "Mayiladuthurai" },
+  {
+    "schoolId": "10051",
+    "name": "Government Higher Secondary School Pamani",
+    "address": "Thiruvarur"
+  },
+  {
+    "schoolId": "10052",
+    "name": "Government Higher Secondary School Oozhiapathu",
+    "address": "Karaikal"
+  },
+  {
+    "schoolId": "10053",
+    "name": "Government Higher Secondary School Alizhur",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10054",
+    "name": "Government Higher Secondary School Adiyakkamangalam",
+    "address": "Thiruvarur"
+  },
+  { "schoolId": "10055", "name": "ONGC Public School", "address": "Karaikal" },
+  {
+    "schoolId": "10056",
+    "name": "Government Higher Secondary School Akkaraipettai",
+    "address": "Nagapattinam"
+  },
+  {
+    "schoolId": "10057",
+    "name": "J. Jeya Matriculation Higher Secondary School",
+    "address": "Nagapattinam"
+  }
+]

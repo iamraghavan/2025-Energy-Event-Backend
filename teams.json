@@ -1,0 +1,1521 @@
+[
+  {
+    "teamId": "50001",
+    "name": "Srinivasa Higher Secondary School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10001"
+  },
+  {
+    "teamId": "50002",
+    "name": "Srinivasa Higher Secondary School Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10001"
+  },
+  {
+    "teamId": "50003",
+    "name": "Srinivasa Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10001"
+  },
+  {
+    "teamId": "50004",
+    "name": "Srinivasa Higher Secondary School Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10001"
+  },
+  {
+    "teamId": "50005",
+    "name": "National Higher Secondary School Boys Basketball",
+    "gender": "M",
+    "sport": "10003",
+    "school": "10002"
+  },
+  {
+    "teamId": "50006",
+    "name": "National Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10002"
+  },
+  {
+    "teamId": "50007",
+    "name": "Kaduvangudi Higher Secondary School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10003"
+  },
+  {
+    "teamId": "50008",
+    "name": "Kaduvangudi Higher Secondary School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10003"
+  },
+  {
+    "teamId": "50009",
+    "name": "Kaduvangudi Higher Secondary School Boys Basketball",
+    "gender": "M",
+    "sport": "10003",
+    "school": "10003"
+  },
+  {
+    "teamId": "50010",
+    "name": "Kaduvangudi Higher Secondary School Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10003"
+  },
+  {
+    "teamId": "50011",
+    "name": "Kaduvangudi Higher Secondary School Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10003"
+  },
+  {
+    "teamId": "50012",
+    "name": "Kaduvangudi Higher Secondary School Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10003"
+  },
+  {
+    "teamId": "50013",
+    "name": "Kaduvangudi Higher Secondary School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10003"
+  },
+  {
+    "teamId": "50014",
+    "name": "Kaduvangudi Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10003"
+  },
+  {
+    "teamId": "50015",
+    "name": "Kaduvangudi Higher Secondary School Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10003"
+  },
+  {
+    "teamId": "50016",
+    "name": "Government Higher Secondary School Komal Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10004"
+  },
+  {
+    "teamId": "50017",
+    "name": "Government Higher Secondary School Komal Girls Volleyball",
+    "gender": "W",
+    "sport": "10002",
+    "school": "10004"
+  },
+  {
+    "teamId": "50018",
+    "name": "Chinmaya Vidyalaya Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10005"
+  },
+  {
+    "teamId": "50019",
+    "name": "Chinmaya Vidyalaya Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10005"
+  },
+  {
+    "teamId": "50020",
+    "name": "Chinmaya Vidyalaya Boys Basketball",
+    "gender": "M",
+    "sport": "10003",
+    "school": "10005"
+  },
+  {
+    "teamId": "50021",
+    "name": "Chinmaya Vidyalaya Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10005"
+  },
+  {
+    "teamId": "50022",
+    "name": "Chinmaya Vidyalaya Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10005"
+  },
+  {
+    "teamId": "50023",
+    "name": "Chinmaya Vidyalaya Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10005"
+  },
+  {
+    "teamId": "50024",
+    "name": "Chinmaya Vidyalaya Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10005"
+  },
+  {
+    "teamId": "50025",
+    "name": "Chinmaya Vidyalaya Boys Table Tennis",
+    "gender": "M",
+    "sport": "20001",
+    "school": "10005"
+  },
+  {
+    "teamId": "50026",
+    "name": "Chinmaya Vidyalaya Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10005"
+  },
+  {
+    "teamId": "50027",
+    "name": "Chinmaya Vidyalaya Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10005"
+  },
+  {
+    "teamId": "50028",
+    "name": "Chinmaya Vidyalaya Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10005"
+  },
+  {
+    "teamId": "50029",
+    "name": "Chinmaya Vidyalaya Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10005"
+  },
+  {
+    "teamId": "50030",
+    "name": "Chinmaya Vidyalaya Girls Table Tennis",
+    "gender": "W",
+    "sport": "20001",
+    "school": "10005"
+  },
+  {
+    "teamId": "50031",
+    "name": "Government Higher Secondary School Thittachery Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10006"
+  },
+  {
+    "teamId": "50032",
+    "name": "Government Higher Secondary School Thittachery Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10006"
+  },
+  {
+    "teamId": "50033",
+    "name": "Government Girls Higher Secondary School Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10007"
+  },
+  {
+    "teamId": "50034",
+    "name": "Government Girls Higher Secondary School Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10007"
+  },
+  {
+    "teamId": "50035",
+    "name": "CSI Higher Secondary School Nagapattinam Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10008"
+  },
+  {
+    "teamId": "50036",
+    "name": "CSI Higher Secondary School Nagapattinam Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10008"
+  },
+  {
+    "teamId": "50037",
+    "name": "CSI Higher Secondary School Nagapattinam Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10008"
+  },
+  {
+    "teamId": "50038",
+    "name": "CSI Higher Secondary School Nagapattinam Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10008"
+  },
+  {
+    "teamId": "50039",
+    "name": "EGSPJ International School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10009"
+  },
+  {
+    "teamId": "50040",
+    "name": "EGSPJ International School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10009"
+  },
+  {
+    "teamId": "50041",
+    "name": "EGSPJ International School Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10009"
+  },
+  {
+    "teamId": "50042",
+    "name": "EGSPJ International School Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10009"
+  },
+  {
+    "teamId": "50043",
+    "name": "EGSPJ International School Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10009"
+  },
+  {
+    "teamId": "50044",
+    "name": "EGSPJ International School Boys Table Tennis",
+    "gender": "M",
+    "sport": "20001",
+    "school": "10009"
+  },
+  {
+    "teamId": "50045",
+    "name": "EGSPJ International School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10009"
+  },
+  {
+    "teamId": "50046",
+    "name": "EGSPJ International School Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10009"
+  },
+  {
+    "teamId": "50047",
+    "name": "EGSPJ International School Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10009"
+  },
+  {
+    "teamId": "50048",
+    "name": "EGSPJ International School Girls Table Tennis",
+    "gender": "W",
+    "sport": "20001",
+    "school": "10009"
+  },
+  {
+    "teamId": "50049",
+    "name": "Everest Kenbridge Senior Secondary School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10010"
+  },
+  {
+    "teamId": "50050",
+    "name": "Everest Kenbridge Senior Secondary School Girls Volleyball",
+    "gender": "W",
+    "sport": "10002",
+    "school": "10010"
+  },
+  {
+    "teamId": "50051",
+    "name": "Infant Jesus Matriculation Higher Secondary School Thevur Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10011"
+  },
+  {
+    "teamId": "50052",
+    "name": "Infant Jesus Matriculation Higher Secondary School Thevur Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10011"
+  },
+  {
+    "teamId": "50053",
+    "name": "Vivekanandam Vidyashram CBSE Senior Secondary School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10012"
+  },
+  {
+    "teamId": "50054",
+    "name": "Vivekanandam Vidyashram CBSE Senior Secondary School Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10012"
+  },
+  {
+    "teamId": "50055",
+    "name": "Cauvery Public School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10013"
+  },
+  {
+    "teamId": "50056",
+    "name": "Cauvery Public School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10013"
+  },
+  {
+    "teamId": "50057",
+    "name": "Cauvery Public School Boys Basketball",
+    "gender": "M",
+    "sport": "10003",
+    "school": "10013"
+  },
+  {
+    "teamId": "50058",
+    "name": "Cauvery Public School Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10013"
+  },
+  {
+    "teamId": "50059",
+    "name": "Cauvery Public School Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10013"
+  },
+  {
+    "teamId": "50060",
+    "name": "Cauvery Public School Boys Table Tennis",
+    "gender": "M",
+    "sport": "20001",
+    "school": "10013"
+  },
+  {
+    "teamId": "50061",
+    "name": "Cauvery Public School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10013"
+  },
+  {
+    "teamId": "50062",
+    "name": "Cauvery Public School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10013"
+  },
+  {
+    "teamId": "50063",
+    "name": "Cauvery Public School Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10013"
+  },
+  {
+    "teamId": "50064",
+    "name": "Cauvery Public School Girls Table Tennis",
+    "gender": "W",
+    "sport": "20001",
+    "school": "10013"
+  },
+  {
+    "teamId": "50065",
+    "name": "Cauvery Public School Girls Volleyball",
+    "gender": "W",
+    "sport": "10002",
+    "school": "10013"
+  },
+  {
+    "teamId": "50066",
+    "name": "Ghouthia Higher Secondary School Nagore Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10014"
+  },
+  {
+    "teamId": "50067",
+    "name": "Ghouthia Higher Secondary School Nagore Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10014"
+  },
+  {
+    "teamId": "50068",
+    "name": "NLC Boys Higher Secondary School Neyveli Boys Basketball",
+    "gender": "M",
+    "sport": "10003",
+    "school": "10015"
+  },
+  {
+    "teamId": "50069",
+    "name": "NLC Boys Higher Secondary School Neyveli Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10015"
+  },
+  {
+    "teamId": "50070",
+    "name": "Government Higher Secondary School Team1 Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10016"
+  },
+  {
+    "teamId": "50071",
+    "name": "Government Higher Secondary School Team1 Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10016"
+  },
+  {
+    "teamId": "50072",
+    "name": "Government Higher Secondary School Team1 Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10016"
+  },
+  {
+    "teamId": "50073",
+    "name": "Government Higher Secondary School Team2 Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10017"
+  },
+  {
+    "teamId": "50074",
+    "name": "Government Higher Secondary School Team2 Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10017"
+  },
+  {
+    "teamId": "50075",
+    "name": "Government Higher Secondary School Team2 Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10017"
+  },
+  {
+    "teamId": "50076",
+    "name": "Vivekananda Matriculation Higher Secondary School Sirkazhi Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10018"
+  },
+  {
+    "teamId": "50077",
+    "name": "Vivekananda Matriculation Higher Secondary School Sirkazhi Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10018"
+  },
+  {
+    "teamId": "50078",
+    "name": "Vivekananda Matriculation Higher Secondary School Sirkazhi Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10018"
+  },
+  {
+    "teamId": "50079",
+    "name": "Vivekananda Matriculation Higher Secondary School Sirkazhi Girls Volleyball",
+    "gender": "W",
+    "sport": "10002",
+    "school": "10018"
+  },
+  {
+    "teamId": "50080",
+    "name": "Government Higher Secondary School Thirupoondi Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10019"
+  },
+  {
+    "teamId": "50081",
+    "name": "Government Higher Secondary School Thirupoondi Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10019"
+  },
+  {
+    "teamId": "50082",
+    "name": "Government Higher Secondary School Thirupoondi Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10019"
+  },
+  {
+    "teamId": "50083",
+    "name": "Government Higher Secondary School Thirupoondi Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10019"
+  },
+  {
+    "teamId": "50084",
+    "name": "Sri Lalithaambiga Matriculation Higher Secondary School Poonthotam Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10020"
+  },
+  {
+    "teamId": "50085",
+    "name": "Sri Lalithaambiga Matriculation Higher Secondary School Poonthotam Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10020"
+  },
+  {
+    "teamId": "50086",
+    "name": "Sri Lalithaambiga Matriculation Higher Secondary School Poonthotam Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10020"
+  },
+  {
+    "teamId": "50087",
+    "name": "Sri Lalithaambiga Matriculation Higher Secondary School Poonthotam Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10020"
+  },
+  {
+    "teamId": "50088",
+    "name": "Sri Lalithaambiga Matriculation Higher Secondary School Poonthotam Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10020"
+  },
+  {
+    "teamId": "50089",
+    "name": "Sri Lalithaambiga Matriculation Higher Secondary School Poonthotam Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10020"
+  },
+  {
+    "teamId": "50090",
+    "name": "Government Higher Secondary School Kurukkathi Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10021"
+  },
+  {
+    "teamId": "50091",
+    "name": "Government Higher Secondary School Kurukkathi Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10021"
+  },
+  {
+    "teamId": "50092",
+    "name": "Government Higher Secondary School Kurukkathi Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10021"
+  },
+  {
+    "teamId": "50093",
+    "name": "Government Higher Secondary School Kurukkathi Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10021"
+  },
+  {
+    "teamId": "50094",
+    "name": "Vaduvur Government Aided Higher Secondary School Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10022"
+  },
+  {
+    "teamId": "50095",
+    "name": "Vaduvur Government Aided Higher Secondary School Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10022"
+  },
+  {
+    "teamId": "50096",
+    "name": "Alagu Jothi Academy Boys Table Tennis",
+    "gender": "M",
+    "sport": "20001",
+    "school": "10023"
+  },
+  {
+    "teamId": "50097",
+    "name": "Alagu Jothi Academy Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10023"
+  },
+  {
+    "teamId": "50098",
+    "name": "Alagu Jothi Academy Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10023"
+  },
+  {
+    "teamId": "50099",
+    "name": "Alagu Jothi Academy Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10023"
+  },
+  {
+    "teamId": "50100",
+    "name": "Alagu Jothi Academy Boys Basketball",
+    "gender": "M",
+    "sport": "10003",
+    "school": "10023"
+  },
+  {
+    "teamId": "50101",
+    "name": "Alagu Jothi Academy Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10023"
+  },
+  {
+    "teamId": "50102",
+    "name": "Alagu Jothi Academy Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10023"
+  },
+  {
+    "teamId": "50103",
+    "name": "Peralam Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10024"
+  },
+  {
+    "teamId": "50104",
+    "name": "Peralam Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10024"
+  },
+  {
+    "teamId": "50105",
+    "name": "Peralam Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10024"
+  },
+  {
+    "teamId": "50106",
+    "name": "Peralam Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10024"
+  },
+  {
+    "teamId": "50107",
+    "name": "Peralam Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10024"
+  },
+  {
+    "teamId": "50108",
+    "name": "Peralam Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10024"
+  },
+  {
+    "teamId": "50109",
+    "name": "V.S. Boys Government Aided Higher Secondary School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10025"
+  },
+  {
+    "teamId": "50110",
+    "name": "V.S. Boys Government Aided Higher Secondary School Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10025"
+  },
+  {
+    "teamId": "50111",
+    "name": "RVS Bharat Matriculation Higher Secondary School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10026"
+  },
+  {
+    "teamId": "50112",
+    "name": "RVS Bharat Matriculation Higher Secondary School Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10026"
+  },
+  {
+    "teamId": "50113",
+    "name": "RVS Bharat Matriculation Higher Secondary School Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10026"
+  },
+  {
+    "teamId": "50114",
+    "name": "RVS Bharat Matriculation Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10026"
+  },
+  {
+    "teamId": "50115",
+    "name": "RVS Bharat Matriculation Higher Secondary School Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10026"
+  },
+  {
+    "teamId": "50116",
+    "name": "Gurugnana Sambandar Mission Matriculation Higher Secondary School Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10027"
+  },
+  {
+    "teamId": "50117",
+    "name": "Gurugnana Sambandar Mission Matriculation Higher Secondary School Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10027"
+  },
+  {
+    "teamId": "50118",
+    "name": "Gurugnana Sambandar Mission Matriculation Higher Secondary School Boys Table Tennis",
+    "gender": "M",
+    "sport": "20001",
+    "school": "10027"
+  },
+  {
+    "teamId": "50119",
+    "name": "Gurugnana Sambandar Mission Matriculation Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10027"
+  },
+  {
+    "teamId": "50120",
+    "name": "Al-Aman Crescent Matriculation Higher Secondary School Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10028"
+  },
+  {
+    "teamId": "50121",
+    "name": "Al-Aman Crescent Matriculation Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10028"
+  },
+  {
+    "teamId": "50122",
+    "name": "Government Higher Secondary School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10029"
+  },
+  {
+    "teamId": "50123",
+    "name": "Government Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10029"
+  },
+  {
+    "teamId": "50124",
+    "name": "Anjugam Muthuvelar Higher Secondary School Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10030"
+  },
+  {
+    "teamId": "50125",
+    "name": "Anjugam Muthuvelar Higher Secondary School Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10030"
+  },
+  {
+    "teamId": "50126",
+    "name": "Sri Sankara Matriculation Higher Secondary School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10031"
+  },
+  {
+    "teamId": "50127",
+    "name": "Sri Sankara Matriculation Higher Secondary School Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10031"
+  },
+  {
+    "teamId": "50128",
+    "name": "Sri Sankara Matriculation Higher Secondary School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10031"
+  },
+  {
+    "teamId": "50129",
+    "name": "Sri Sankara Matriculation Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10031"
+  },
+  {
+    "teamId": "50130",
+    "name": "Sri Sankara Matriculation Higher Secondary School Girls Table Tennis",
+    "gender": "W",
+    "sport": "20001",
+    "school": "10031"
+  },
+  {
+    "teamId": "50131",
+    "name": "Sri Sankara Matriculation Higher Secondary School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10031"
+  },
+  {
+    "teamId": "50132",
+    "name": "Sri Sankara Matriculation Higher Secondary School Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10031"
+  },
+  {
+    "teamId": "50133",
+    "name": "Servite English High School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10032"
+  },
+  {
+    "teamId": "50134",
+    "name": "Servite English High School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10032"
+  },
+  {
+    "teamId": "50135",
+    "name": "Government Higher Secondary School Suranur Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10033"
+  },
+  {
+    "teamId": "50136",
+    "name": "Government Higher Secondary School Suranur Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10033"
+  },
+  {
+    "teamId": "50137",
+    "name": "Government Higher Secondary School Peralam Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10034"
+  },
+  {
+    "teamId": "50138",
+    "name": "Government Higher Secondary School Peralam Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10034"
+  },
+  {
+    "teamId": "50139",
+    "name": "St Antony’s Matriculation Higher Secondary School Boys Basketball",
+    "gender": "M",
+    "sport": "10003",
+    "school": "10035"
+  },
+  {
+    "teamId": "50140",
+    "name": "St Antony’s Matriculation Higher Secondary School Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10035"
+  },
+  {
+    "teamId": "50141",
+    "name": "St Antony’s Matriculation Higher Secondary School Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10035"
+  },
+  {
+    "teamId": "50142",
+    "name": "St Antony’s Matriculation Higher Secondary School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10035"
+  },
+  {
+    "teamId": "50143",
+    "name": "St Antony’s Matriculation Higher Secondary School Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10035"
+  },
+  {
+    "teamId": "50144",
+    "name": "Victory Higher Secondary School Panjanithikulam West Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10036"
+  },
+  {
+    "teamId": "50145",
+    "name": "Victory Higher Secondary School Panjanithikulam West Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10036"
+  },
+  {
+    "teamId": "50146",
+    "name": "Saradhambal Vidyashram Matriculation Higher Secondary School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10037"
+  },
+  {
+    "teamId": "50147",
+    "name": "Saradhambal Vidyashram Matriculation Higher Secondary School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10037"
+  },
+  {
+    "teamId": "50148",
+    "name": "Saradhambal Vidyashram Matriculation Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10037"
+  },
+  {
+    "teamId": "50149",
+    "name": "Adharsh Matriculation Higher Secondary School Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10038"
+  },
+  {
+    "teamId": "50150",
+    "name": "Adharsh Matriculation Higher Secondary School Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10038"
+  },
+  {
+    "teamId": "50151",
+    "name": "Adharsh Matriculation Higher Secondary School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10038"
+  },
+  {
+    "teamId": "50152",
+    "name": "Adharsh Matriculation Higher Secondary School Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10038"
+  },
+  {
+    "teamId": "50153",
+    "name": "Adharsh Matriculation Higher Secondary School Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10038"
+  },
+  {
+    "teamId": "50154",
+    "name": "Adharsh Matriculation Higher Secondary School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10038"
+  },
+  {
+    "teamId": "50155",
+    "name": "Veludayar Higher Secondary School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10039"
+  },
+  {
+    "teamId": "50156",
+    "name": "Veludayar Higher Secondary School Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10039"
+  },
+  {
+    "teamId": "50157",
+    "name": "Janaki Anni Government Higher Secondary School Alathambadi Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10040"
+  },
+  {
+    "teamId": "50158",
+    "name": "Janaki Anni Government Higher Secondary School Alathambadi Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10040"
+  },
+  {
+    "teamId": "50159",
+    "name": "Government Higher Secondary School Thagattur Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10041"
+  },
+  {
+    "teamId": "50160",
+    "name": "Government Higher Secondary School Thagattur Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10041"
+  },
+  {
+    "teamId": "50161",
+    "name": "Government Higher Secondary School Thagattur Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10041"
+  },
+  {
+    "teamId": "50162",
+    "name": "Natarajan Dhamayanthi High School Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10042"
+  },
+  {
+    "teamId": "50163",
+    "name": "Natarajan Dhamayanthi High School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10042"
+  },
+  {
+    "teamId": "50164",
+    "name": "Natarajan Dhamayanthi High School Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10042"
+  },
+  {
+    "teamId": "50165",
+    "name": "Don Bosco Higher Secondary School Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10043"
+  },
+  {
+    "teamId": "50166",
+    "name": "Don Bosco Higher Secondary School Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10043"
+  },
+  {
+    "teamId": "50167",
+    "name": "Don Bosco Higher Secondary School Girls Table Tennis",
+    "gender": "W",
+    "sport": "20001",
+    "school": "10043"
+  },
+  {
+    "teamId": "50168",
+    "name": "Thamarai International School Boys Table Tennis",
+    "gender": "M",
+    "sport": "20001",
+    "school": "10044"
+  },
+  {
+    "teamId": "50169",
+    "name": "Thamarai International School Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10044"
+  },
+  {
+    "teamId": "50170",
+    "name": "Thamarai International School Girls Table Tennis",
+    "gender": "W",
+    "sport": "20001",
+    "school": "10044"
+  },
+  {
+    "teamId": "50171",
+    "name": "Government Higher Secondary School Umbalacherry Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10045"
+  },
+  {
+    "teamId": "50172",
+    "name": "Government Higher Secondary School Umbalacherry Girls Chess",
+    "gender": "W",
+    "sport": "20003",
+    "school": "10045"
+  },
+  {
+    "teamId": "50173",
+    "name": "Government Higher Secondary School Umbalacherry Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10045"
+  },
+  {
+    "teamId": "50174",
+    "name": "Government Higher Secondary School Umbalacherry Girls Table Tennis",
+    "gender": "W",
+    "sport": "20001",
+    "school": "10045"
+  },
+  {
+    "teamId": "50175",
+    "name": "Government Higher Secondary School Pragramam Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10046"
+  },
+  {
+    "teamId": "50176",
+    "name": "Government Higher Secondary School Pragramam Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10046"
+  },
+  {
+    "teamId": "50177",
+    "name": "Government Higher Secondary School Pragramam Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10046"
+  },
+  {
+    "teamId": "50178",
+    "name": "Government Higher Secondary School Pragramam Girls Volleyball",
+    "gender": "W",
+    "sport": "10002",
+    "school": "10046"
+  },
+  {
+    "teamId": "50179",
+    "name": "RMASPGHS Karaikalmedu Boys Table Tennis",
+    "gender": "M",
+    "sport": "20001",
+    "school": "10047"
+  },
+  {
+    "teamId": "50180",
+    "name": "RMASPGHS Karaikalmedu Girls Volleyball",
+    "gender": "W",
+    "sport": "10002",
+    "school": "10047"
+  },
+  {
+    "teamId": "50181",
+    "name": "Regional Perfect Higher Secondary School Nedungadu Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10048"
+  },
+  {
+    "teamId": "50182",
+    "name": "Regional Perfect Higher Secondary School Nedungadu Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10048"
+  },
+  {
+    "teamId": "50183",
+    "name": "Regional Perfect Higher Secondary School Nedungadu Girls Volleyball",
+    "gender": "W",
+    "sport": "10002",
+    "school": "10048"
+  },
+  {
+    "teamId": "50184",
+    "name": "TPGHSS Kovilpathu Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10049"
+  },
+  {
+    "teamId": "50185",
+    "name": "TPGHSS Kovilpathu Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10049"
+  },
+  {
+    "teamId": "50186",
+    "name": "SMHHSS Boys Basketball",
+    "gender": "M",
+    "sport": "10003",
+    "school": "10050"
+  },
+  {
+    "teamId": "50187",
+    "name": "SMHHSS Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10050"
+  },
+  {
+    "teamId": "50188",
+    "name": "Government Higher Secondary School Pamani Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10051"
+  },
+  {
+    "teamId": "50189",
+    "name": "Government Higher Secondary School Pamani Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10051"
+  },
+  {
+    "teamId": "50190",
+    "name": "Government Higher Secondary School Pamani Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10051"
+  },
+  {
+    "teamId": "50191",
+    "name": "Government Higher Secondary School Pamani Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10051"
+  },
+  {
+    "teamId": "50192",
+    "name": "Government Higher Secondary School Oozhiapathu Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10052"
+  },
+  {
+    "teamId": "50193",
+    "name": "Government Higher Secondary School Oozhiapathu Boys Table Tennis",
+    "gender": "M",
+    "sport": "20001",
+    "school": "10052"
+  },
+  {
+    "teamId": "50194",
+    "name": "Government Higher Secondary School Oozhiapathu Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10052"
+  },
+  {
+    "teamId": "50195",
+    "name": "Government Higher Secondary School Alizhur Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10053"
+  },
+  {
+    "teamId": "50196",
+    "name": "Government Higher Secondary School Alizhur Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10053"
+  },
+  {
+    "teamId": "50197",
+    "name": "Government Higher Secondary School Alizhur Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10053"
+  },
+  {
+    "teamId": "50198",
+    "name": "Government Higher Secondary School Adiyakkamangalam Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10054"
+  },
+  {
+    "teamId": "50199",
+    "name": "Government Higher Secondary School Adiyakkamangalam Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10054"
+  },
+  {
+    "teamId": "50200",
+    "name": "ONGC Public School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10055"
+  },
+  {
+    "teamId": "50201",
+    "name": "ONGC Public School Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10055"
+  },
+  {
+    "teamId": "50202",
+    "name": "ONGC Public School Boys Cricket",
+    "gender": "M",
+    "sport": "10004",
+    "school": "10055"
+  },
+  {
+    "teamId": "50203",
+    "name": "ONGC Public School Boys Football",
+    "gender": "M",
+    "sport": "10005",
+    "school": "10055"
+  },
+  {
+    "teamId": "50204",
+    "name": "ONGC Public School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10055"
+  },
+  {
+    "teamId": "50205",
+    "name": "ONGC Public School Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10055"
+  },
+  {
+    "teamId": "50206",
+    "name": "Government Higher Secondary School Akkaraipettai Boys Athletics",
+    "gender": "M",
+    "sport": "20004",
+    "school": "10056"
+  },
+  {
+    "teamId": "50207",
+    "name": "Government Higher Secondary School Akkaraipettai Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10056"
+  },
+  {
+    "teamId": "50208",
+    "name": "Government Higher Secondary School Akkaraipettai Boys Chess",
+    "gender": "M",
+    "sport": "20003",
+    "school": "10056"
+  },
+  {
+    "teamId": "50209",
+    "name": "Government Higher Secondary School Akkaraipettai Boys Kabaddi",
+    "gender": "M",
+    "sport": "10001",
+    "school": "10056"
+  },
+  {
+    "teamId": "50210",
+    "name": "Government Higher Secondary School Akkaraipettai Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10056"
+  },
+  {
+    "teamId": "50211",
+    "name": "Government Higher Secondary School Akkaraipettai Girls Athletics",
+    "gender": "W",
+    "sport": "20004",
+    "school": "10056"
+  },
+  {
+    "teamId": "50212",
+    "name": "Government Higher Secondary School Akkaraipettai Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10056"
+  },
+  {
+    "teamId": "50213",
+    "name": "Government Higher Secondary School Akkaraipettai Girls Kabaddi",
+    "gender": "W",
+    "sport": "10001",
+    "school": "10056"
+  },
+  {
+    "teamId": "50214",
+    "name": "Government Higher Secondary School Akkaraipettai Girls Volleyball",
+    "gender": "W",
+    "sport": "10002",
+    "school": "10056"
+  },
+  {
+    "teamId": "50215",
+    "name": "J. Jeya Matriculation Higher Secondary School Boys Badminton",
+    "gender": "M",
+    "sport": "20002",
+    "school": "10057"
+  },
+  {
+    "teamId": "50216",
+    "name": "J. Jeya Matriculation Higher Secondary School Boys Volleyball",
+    "gender": "M",
+    "sport": "10002",
+    "school": "10057"
+  },
+  {
+    "teamId": "50217",
+    "name": "J. Jeya Matriculation Higher Secondary School Girls Badminton",
+    "gender": "W",
+    "sport": "20002",
+    "school": "10057"
+  }
+]
