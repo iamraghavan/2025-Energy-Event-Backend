@@ -107,15 +107,8 @@ exports.login = async (req, res) => {
   }
 };
 
-
 exports.getAllUsers = async (req, res) => {
   try {
-    // Only allow superadmin
-    const requestingUser = req.user; // populated by apiKeyAuth middleware
-    if (requestingUser.role !== 'superadmin') {
-      return res.status(403).json({ message: 'Access denied' });
-    }
-
     const { role } = req.query;
     const query = role ? { role } : {};
 
