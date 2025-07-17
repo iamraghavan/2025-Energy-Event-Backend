@@ -106,3 +106,28 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    // Only allow superadmin
+    const requestingUser = req.user; // populated by apiKeyAuth middleware
+    if (requestingUser.role !== 'superadmin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    const { role } = req.query;
+    const query = role ? { role } : {};
+
+    const users = await User.find(query).select('-password');
+
+    res.status(200).json({
+      success: true,
+      count: users.length,
+      data: users
+    });
+  } catch (err) {
+    console.error('[getAllUsers]', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
