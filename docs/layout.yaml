@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: Big Screen Layout API
+  version: 1.0.0
+  description: |
+    API for managing a global screen layout divided into 4 quadrants.
+    - Stores one layout document in MongoDB.
+    - Emits real-time updates using Socket.IO on layout changes.
+
+servers:
+  - url: /api
+    description: Base API path
+
+tags:
+  - name: Layout
+    description: Endpoints for getting and updating screen layout
+
+paths:
+  /layout:
+    get:
+      tags:
+        - Layout
+      summary: Get the current layout
+      operationId: getLayout
+      responses:
+        "200":
+          description: Current layout data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LayoutResponse"
+        "500":
+          description: Internal server error
+    post:
+      tags:
+        - Layout
+      summary: Create or update the layout
+      operationId: postLayout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LayoutInput"
+      responses:
+        "200":
+          description: Layout created or updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LayoutResponse"
+        "500":
+          description: Internal server error
+    patch:
+      tags:
+        - Layout
+      summary: Update the layout
+      operationId: patchLayout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LayoutInput"
+      responses:
+        "200":
+          description: Layout updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LayoutResponse"
+        "500":
+          description: Internal server error
+
+components:
+  schemas:
+    LayoutInput:
+      type: object
+      properties:
+        quadrant1:
+          type: string
+          example: basketball
+        quadrant2:
+          type: string
+          example: cricket
+        quadrant3:
+          type: string
+          example: tennis
+        quadrant4:
+          type: string
+          example: football
+      required:
+        - quadrant1
+        - quadrant2
+        - quadrant3
+        - quadrant4
+
+    Layout:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 64cdef12abf134001ec12345
+        quadrant1:
+          type: string
+        quadrant2:
+          type: string
+        quadrant3:
+          type: string
+        quadrant4:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    LayoutResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Layout updated
+        data:
+          $ref: "#/components/schemas/Layout"

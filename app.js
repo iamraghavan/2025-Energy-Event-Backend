@@ -13,7 +13,7 @@ const schoolRoutes = require('./routes/schoolRoutes');
 
 const matchRoutes = require('./routes/matchRoutes');
 const teamRoutes = require('./routes/teamRoutes');
-
+const layoutRoutes = require('./routes/layoutRoutes');
 
 
 const swaggerUi = require('swagger-ui-express');
@@ -41,6 +41,9 @@ app.use('/api/sports', sportRoutes);
 app.use('/api/schools', schoolRoutes);
 app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
+
+app.use('/api/layout', layoutRoutes);
+
 app.use(errorHandler);
 
 module.exports = app;
