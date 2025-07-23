@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   title: Player API
-  version: 1.0.0
-  description: API for managing players in teams
+  version: 1.1.0
+  description: API for managing cricket players, including bulk upload via Excel
 
 tags:
   - name: Players
@@ -33,11 +33,10 @@ paths:
                   example: 10
                 role:
                   type: string
-                  enum: [batsman, bowler, allrounder, keeper]
-                  example: batsman
+                  example: Right-hand Batsman
                 teamId:
                   type: string
-                  example: "50481"
+                  example: "50073"
       responses:
         201:
           description: Player created successfully
@@ -56,7 +55,7 @@ paths:
           required: true
           schema:
             type: string
-          description: Custom teamId
+          description: Custom teamId (e.g., "50073")
       responses:
         200:
           description: List of players returned
@@ -89,7 +88,6 @@ paths:
                   type: integer
                 role:
                   type: string
-                  enum: [batsman, bowler, allrounder, keeper]
       responses:
         200:
           description: Player updated
@@ -113,5 +111,39 @@ paths:
           description: Player deleted
         404:
           description: Player not found
+        500:
+          description: Server error
+
+  /api/players/bulk-upload/{teamId}:
+    post:
+      tags: [Players]
+      summary: Upload Excel file to bulk add players to a team
+      parameters:
+        - in: path
+          name: teamId
+          required: true
+          schema:
+            type: string
+          description: Team ID (custom 5-digit ID)
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Excel file (.xlsx) with player list
+      responses:
+        200:
+          description: Bulk upload successful
+        400:
+          description: Missing file or validation errors
+        404:
+          description: Team not found
         500:
           description: Server error

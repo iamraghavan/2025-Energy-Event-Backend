@@ -1,6 +1,72 @@
 const Player = require('../models/Player');
 const Team = require('../models/Team');
 
+const xlsx = require('xlsx');
+const fs = require('fs');
+const path = require('path');
+
+exports.bulkUploadPlayers = async (req, res) => {
+  try {
+    const team = await Team.findOne({ teamId: req.params.teamId });
+    if (!team) return res.status(404).json({ message: 'Team not found' });
+
+    if (!req.file) return res.status(400).json({ message: 'Excel file is required' });
+
+    const filePath = path.resolve(req.file.path);
+    const workbook = xlsx.readFile(filePath);
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const data = xlsx.utils.sheet_to_json(sheet);
+
+    const existingPlayers = await Player.find({ team: team._id });
+    const existingNames = new Set(existingPlayers.map(p => p.name.toLowerCase()));
+    const existingJerseys = new Set(existingPlayers.map(p => p.jerseyNumber));
+
+    const newPlayers = [];
+    const duplicates = [];
+
+    for (const row of data) {
+      const name = (row.name || '').trim();
+      const jerseyNumber = parseInt(row.jerseyNumber);
+      const role = row.role;
+
+      if (!name || isNaN(jerseyNumber) || !role) continue;
+
+      if (
+        existingNames.has(name.toLowerCase()) ||
+        existingJerseys.has(jerseyNumber)
+      ) {
+        duplicates.push({ name, jerseyNumber, reason: 'Duplicate in DB' });
+        continue;
+      }
+
+      if (existingPlayers.length + newPlayers.length >= 11) {
+        duplicates.push({ name, jerseyNumber, reason: 'Exceeds 11 players limit' });
+        continue;
+      }
+
+      newPlayers.push({
+        name,
+        jerseyNumber,
+        role,
+        team: team._id
+      });
+    }
+
+    await Player.insertMany(newPlayers);
+
+    fs.unlinkSync(filePath); // cleanup uploaded file
+
+    res.status(200).json({
+      success: true,
+      inserted: newPlayers.length,
+      duplicates
+    });
+  } catch (err) {
+    console.error('[bulkUploadPlayers]', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 // Add player to team
 exports.addPlayer = async (req, res) => {
   try {
