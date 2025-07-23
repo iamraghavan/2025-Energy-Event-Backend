@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: Player API
+  version: 1.0.0
+  description: API for managing players in teams
+
+tags:
+  - name: Players
+    description: Endpoints related to players
+
+paths:
+  /api/players:
+    post:
+      tags: [Players]
+      summary: Add a new player to a team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - jerseyNumber
+                - role
+                - teamId
+              properties:
+                name:
+                  type: string
+                  example: Ravi Kumar
+                jerseyNumber:
+                  type: integer
+                  example: 10
+                role:
+                  type: string
+                  enum: [batsman, bowler, allrounder, keeper]
+                  example: batsman
+                teamId:
+                  type: string
+                  example: "50481"
+      responses:
+        201:
+          description: Player created successfully
+        400:
+          description: Validation error or max 11 players reached
+        500:
+          description: Server error
+
+  /api/players/team/{teamId}:
+    get:
+      tags: [Players]
+      summary: Get all players for a given team
+      parameters:
+        - in: path
+          name: teamId
+          required: true
+          schema:
+            type: string
+          description: Custom teamId
+      responses:
+        200:
+          description: List of players returned
+        404:
+          description: Team not found
+        500:
+          description: Server error
+
+  /api/players/{id}:
+    patch:
+      tags: [Players]
+      summary: Update player details
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Player MongoDB _id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                jerseyNumber:
+                  type: integer
+                role:
+                  type: string
+                  enum: [batsman, bowler, allrounder, keeper]
+      responses:
+        200:
+          description: Player updated
+        404:
+          description: Player not found
+        500:
+          description: Server error
+
+    delete:
+      tags: [Players]
+      summary: Delete a player by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Player MongoDB _id
+      responses:
+        200:
+          description: Player deleted
+        404:
+          description: Player not found
+        500:
+          description: Server error

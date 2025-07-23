@@ -13,7 +13,13 @@ const schoolRoutes = require('./routes/schoolRoutes');
 
 const matchRoutes = require('./routes/matchRoutes');
 const teamRoutes = require('./routes/teamRoutes');
+
+
+const playerRoutes = require('./routes/playerRoutes');
 const layoutRoutes = require('./routes/layoutRoutes');
+
+// cricket match routes
+const cricketMatchRoutes = require('./routes/cricketMatchRoutes');
 
 
 const swaggerUi = require('swagger-ui-express');
@@ -43,6 +49,10 @@ app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
 
 app.use('/api/layout', layoutRoutes);
+
+app.use('/api/players', playerRoutes);
+
+app.use('/api/cricket-matches', cricketMatchRoutes);
 
 app.use(errorHandler);
 

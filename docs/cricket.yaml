@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Cricket Match API
+  version: 1.0.0
+  description: API for managing cricket match scoring and details.
+
+tags:
+  - name: CricketMatches
+    description: Endpoints for cricket match operations
+
+paths:
+  /api/cricket-matches/score:
+    patch:
+      tags: [CricketMatches]
+      summary: Update player score in a cricket match
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - matchId
+                - playerId
+                - team
+              properties:
+                matchId:
+                  type: string
+                  example: 64ec123abc4567890deffedc
+                playerId:
+                  type: string
+                  example: 64eb456abc4567890defabcd
+                team:
+                  type: string
+                  enum: [A, B]
+                  example: A
+                runs:
+                  type: integer
+                  example: 34
+                wickets:
+                  type: integer
+                  example: 1
+                ballsFaced:
+                  type: integer
+                  example: 24
+                oversBowled:
+                  type: number
+                  example: 2.4
+                extraBalls:
+                  type: integer
+                  example: 1
+      responses:
+        200:
+          description: Player score updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: object
+        400:
+          description: Bad request or validation error
+        404:
+          description: Match or player not found
+        500:
+          description: Server error
+
+  /api/cricket-matches/{matchId}:
+    get:
+      tags: [CricketMatches]
+      summary: Get full cricket match details
+      parameters:
+        - name: matchId
+          in: path
+          required: true
+          description: ID of the cricket match
+          schema:
+            type: string
+      responses:
+        200:
+          description: Match details returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  match:
+                    type: object
+        404:
+          description: Match not found
+        500:
+          description: Server error
