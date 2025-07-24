@@ -8,7 +8,9 @@ const {
   deleteCricketMatch,
   updatePlayerScore,
   getCricketMatchDetails,
-  addHighlight
+  addHighlight,
+
+  updateBallScore 
 } = require('../controllers/cricketMatchController');
 
 router.post('/', createCricketMatch);
@@ -20,5 +22,7 @@ router.delete('/:matchId', deleteCricketMatch);
 router.patch('/score', updatePlayerScore);
 router.get('/details/:matchId', getCricketMatchDetails);
 router.post('/:matchId/highlight', addHighlight);
+
+router.post('/:matchId/ball', updateBallScore);
 
 module.exports = router;
