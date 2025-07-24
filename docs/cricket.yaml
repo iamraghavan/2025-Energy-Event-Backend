@@ -12,8 +12,8 @@ servers:
     description: Base API path
 
 tags:
-  - name: Cricket Match
-    description: Endpoints for getting and updating screen layout
+  - name: CricketMatch
+    description: Endpoints for managing cricket matches and live updates
 
 paths:
   /:
@@ -27,16 +27,14 @@ paths:
             schema:
               type: object
               required:
-                [
-                  teamAId,
-                  teamBId,
-                  overs,
-                  fixtureName,
-                  captains,
-                  wicketKeepers,
-                  tossWinner,
-                  tossDecision,
-                ]
+                - teamAId
+                - teamBId
+                - overs
+                - fixtureName
+                - captains
+                - wicketKeepers
+                - tossWinner
+                - tossDecision
               properties:
                 teamAId:
                   type: string
@@ -69,6 +67,15 @@ paths:
       responses:
         201:
           description: Match created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
 
     get:
       summary: Get all matches
@@ -76,6 +83,17 @@ paths:
       responses:
         200:
           description: A list of matches
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
 
   /{matchId}:
     get:
@@ -90,6 +108,10 @@ paths:
       responses:
         200:
           description: Match found
+          content:
+            application/json:
+              schema:
+                type: object
 
     patch:
       summary: Update a match
@@ -109,6 +131,10 @@ paths:
       responses:
         200:
           description: Match updated
+          content:
+            application/json:
+              schema:
+                type: object
 
     delete:
       summary: Delete a match
@@ -122,6 +148,10 @@ paths:
       responses:
         200:
           description: Match deleted
+          content:
+            application/json:
+              schema:
+                type: object
 
   /score:
     patch:
@@ -155,6 +185,10 @@ paths:
       responses:
         200:
           description: Score updated
+          content:
+            application/json:
+              schema:
+                type: object
 
   /details/{matchId}:
     get:
@@ -169,6 +203,10 @@ paths:
       responses:
         200:
           description: Match stats returned
+          content:
+            application/json:
+              schema:
+                type: object
 
   /{matchId}/highlight:
     post:
@@ -233,6 +271,10 @@ paths:
       responses:
         201:
           description: Highlight added
+          content:
+            application/json:
+              schema:
+                type: object
 
 components:
   securitySchemes:
