@@ -222,27 +222,29 @@
 
   exports.updateBallScore = async (req, res) => {
   try {
+    const { matchId } = req.params;
+    console.log('[MATCH ID RECEIVED]', matchId);
+
+    const match = await CricketMatch.findById(matchId);
+    if (!match) return res.status(404).json({ message: 'Match not found' });
+
     const {
-      matchId,
       over,
       ball,
       batsman,
       bowler,
-      run,
+      run = 0,
       isFour,
       isSix,
       isWicket,
       wicketType,
       fielder,
       shotDirection,
-      extraType,
+      extraType = null,
       commentary
     } = req.body;
 
-    const match = await CricketMatch.findById(matchId);
-    if (!match) return res.status(404).json({ message: 'Match not found' });
-
-    // Add highlight entry
+    // 1. Save highlight
     const highlight = {
       over,
       ball,
@@ -260,7 +262,7 @@
     };
     match.highlights.push(highlight);
 
-    // Update batsman
+    // 2. Find team + batsman object
     let team = 'A';
     let batsmanScore = match.playersA.find(p => p.player.toString() === batsman);
     if (!batsmanScore) {
@@ -269,37 +271,57 @@
     }
     if (!batsmanScore) return res.status(404).json({ message: 'Batsman not found in match' });
 
-    if (!extraType || extraType === null) {
-      batsmanScore.runs += run;
-      batsmanScore.ballsFaced += 1;
-    }
-
-    // Update bowler
+    // 3. Find bowler
     let bowlerScore = match.playersA.find(p => p.player.toString() === bowler);
     if (!bowlerScore) bowlerScore = match.playersB.find(p => p.player.toString() === bowler);
     if (!bowlerScore) return res.status(404).json({ message: 'Bowler not found in match' });
 
-    if (!extraType || ['bye', 'leg bye'].includes(extraType)) {
+    // 4. Handle extras and scoring
+    const isExtraRun = extraType !== null;
+    const legalDelivery = !['wide', 'no ball'].includes(extraType);
+
+    if (!isExtraRun) {
+      // Normal ball
+      batsmanScore.runs += run;
+      batsmanScore.ballsFaced += 1;
       bowlerScore.oversBowled += 1 / 6;
     } else {
-      bowlerScore.extraBalls += 1;
+      // Handle extras
+      if (extraType === 'no ball') {
+        batsmanScore.runs += run; // Run off no ball goes to batsman
+        bowlerScore.extraBalls += 1;
+      } else if (extraType === 'wide') {
+        bowlerScore.extraBalls += 1;
+      } else if (['bye', 'leg bye'].includes(extraType)) {
+        bowlerScore.oversBowled += 1 / 6;
+        // Batsman does not get runs or ballsFaced
+      }
     }
 
-    if (isWicket) bowlerScore.wickets += 1;
+    // 5. Wicket logic
+    if (isWicket) {
+      bowlerScore.wickets += 1;
+    }
 
     await match.save();
 
+    // 6. Socket Emit
     req.app.get('io').emit('ballScored', {
       matchId,
       highlight,
       batsmanId: batsman,
-      bowlerId: bowler
+      bowlerId: bowler,
+      team
     });
 
-    res.status(200).json({ success: true, message: 'Ball score updated', highlight });
+    res.status(200).json({
+      success: true,
+      message: 'Ball recorded and score updated',
+      highlight
+    });
+
   } catch (err) {
     console.error('[updateBallScore]', err);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
-
