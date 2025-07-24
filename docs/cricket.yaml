@@ -2,17 +2,26 @@ openapi: 3.0.0
 info:
   title: Cricket Match API
   version: 1.0.0
-  description: API for managing cricket match scoring and details.
+  description: API to manage cricket matches, player stats, and real-time scoring
 
 tags:
   - name: CricketMatches
-    description: Endpoints for cricket match operations
+    description: CRUD and score update for cricket matches
 
 paths:
-  /api/cricket-matches/score:
-    patch:
+  /api/cricket-matches:
+    get:
       tags: [CricketMatches]
-      summary: Update player score in a cricket match
+      summary: Get all cricket matches
+      responses:
+        200:
+          description: List of all matches
+        500:
+          description: Server error
+
+    post:
+      tags: [CricketMatches]
+      summary: Create a new cricket match fixture
       requestBody:
         required: true
         content:
@@ -20,80 +29,156 @@ paths:
             schema:
               type: object
               required:
-                - matchId
-                - playerId
-                - team
+                [teamAId, teamBId, overs, fixtureName, captains, wicketKeepers]
               properties:
-                matchId:
+                teamAId:
                   type: string
-                  example: 64ec123abc4567890deffedc
-                playerId:
+                  example: "50073"
+                teamBId:
                   type: string
-                  example: 64eb456abc4567890defabcd
-                team:
+                  example: "50092"
+                overs:
+                  type: integer
+                  enum: [6, 8, 10]
+                  example: 8
+                fixtureName:
                   type: string
-                  enum: [A, B]
-                  example: A
-                runs:
-                  type: integer
-                  example: 34
-                wickets:
-                  type: integer
-                  example: 1
-                ballsFaced:
-                  type: integer
-                  example: 24
-                oversBowled:
-                  type: number
-                  example: 2.4
-                extraBalls:
-                  type: integer
-                  example: 1
+                  example: Quarter Final 1
+                captains:
+                  type: object
+                  required: [teamA, teamB]
+                  properties:
+                    teamA:
+                      type: string
+                      example: "64f3a3f8f9a93c0012345678"
+                    teamB:
+                      type: string
+                      example: "64f3a3f8f9a93c0012349999"
+                wicketKeepers:
+                  type: object
+                  required: [teamA, teamB]
+                  properties:
+                    teamA:
+                      type: string
+                      example: "64f3a3f8f9a93c0012345679"
+                    teamB:
+                      type: string
+                      example: "64f3a3f8f9a93c0012349998"
       responses:
-        200:
-          description: Player score updated successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  message:
-                    type: string
-                  data:
-                    type: object
-        400:
-          description: Bad request or validation error
-        404:
-          description: Match or player not found
+        201:
+          description: Match created
         500:
           description: Server error
 
   /api/cricket-matches/{matchId}:
     get:
       tags: [CricketMatches]
-      summary: Get full cricket match details
+      summary: Get a single match by ID
       parameters:
         - name: matchId
           in: path
           required: true
-          description: ID of the cricket match
+          schema:
+            type: string
+            example: 64efc034f6abc1234567890f
+      responses:
+        200:
+          description: Match data
+        404:
+          description: Not found
+
+    patch:
+      tags: [CricketMatches]
+      summary: Update match meta (overs, winner, etc.)
+      parameters:
+        - name: matchId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                overs:
+                  type: integer
+                winningTeam:
+                  type: string
+                isComplete:
+                  type: boolean
+      responses:
+        200:
+          description: Updated match
+        404:
+          description: Not found
+
+    delete:
+      tags: [CricketMatches]
+      summary: Delete a cricket match
+      parameters:
+        - name: matchId
+          in: path
+          required: true
           schema:
             type: string
       responses:
         200:
-          description: Match details returned
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  match:
-                    type: object
+          description: Match deleted
+        404:
+          description: Not found
+
+  /api/cricket-matches/score:
+    patch:
+      tags: [CricketMatches]
+      summary: Update score for a player
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [matchId, playerId, team]
+              properties:
+                matchId:
+                  type: string
+                playerId:
+                  type: string
+                team:
+                  type: string
+                  enum: [A, B]
+                runs:
+                  type: integer
+                wickets:
+                  type: integer
+                ballsFaced:
+                  type: integer
+                oversBowled:
+                  type: number
+                extraBalls:
+                  type: integer
+      responses:
+        200:
+          description: Player score updated
+        404:
+          description: Player or match not found
+        500:
+          description: Internal error
+
+  /api/cricket-matches/details/{matchId}:
+    get:
+      tags: [CricketMatches]
+      summary: Get detailed match stats with players
+      parameters:
+        - name: matchId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Detailed match with team + player scores
         404:
           description: Match not found
-        500:
-          description: Server error

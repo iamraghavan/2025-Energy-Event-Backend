@@ -1,11 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const {
+  createCricketMatch,
+  getAllCricketMatches,
+  getCricketMatchById,
+  updateCricketMatch,
+  deleteCricketMatch,
   updatePlayerScore,
   getCricketMatchDetails
 } = require('../controllers/cricketMatchController');
 
+router.post('/', createCricketMatch);
+router.get('/', getAllCricketMatches);
+router.get('/:matchId', getCricketMatchById);
+router.patch('/:matchId', updateCricketMatch);
+router.delete('/:matchId', deleteCricketMatch);
+
 router.patch('/score', updatePlayerScore);
-router.get('/:matchId', getCricketMatchDetails); // GET /api/matches/:matchId
+router.get('/details/:matchId', getCricketMatchDetails);
 
 module.exports = router;
