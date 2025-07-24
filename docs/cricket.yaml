@@ -2,183 +2,162 @@ openapi: 3.0.0
 info:
   title: Cricket Match API
   version: 1.0.0
-  description: API to manage cricket matches, player stats, and real-time scoring
+  description: API for managing cricket matches, scores, and highlights.
 
 tags:
-  - name: CricketMatches
-    description: CRUD and score update for cricket matches
+  - name: CricketMatch
+    description: Endpoints related to cricket matches
 
 paths:
   /api/cricket-matches:
-    get:
-      tags: [CricketMatches]
-      summary: Get all cricket matches
-      responses:
-        200:
-          description: List of all matches
-        500:
-          description: Server error
-
     post:
-      tags: [CricketMatches]
-      summary: Create a new cricket match fixture
+      tags: [CricketMatch]
+      summary: Create a new cricket match
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required:
-                [teamAId, teamBId, overs, fixtureName, captains, wicketKeepers]
               properties:
-                teamAId:
-                  type: string
-                  example: "50073"
-                teamBId:
-                  type: string
-                  example: "50092"
-                overs:
-                  type: integer
-                  enum: [6, 8, 10]
-                  example: 8
-                fixtureName:
-                  type: string
-                  example: Quarter Final 1
+                teamAId: { type: string }
+                teamBId: { type: string }
+                overs: { type: integer, enum: [6, 8, 10] }
+                fixtureName: { type: string }
                 captains:
                   type: object
-                  required: [teamA, teamB]
                   properties:
-                    teamA:
-                      type: string
-                      example: "64f3a3f8f9a93c0012345678"
-                    teamB:
-                      type: string
-                      example: "64f3a3f8f9a93c0012349999"
+                    teamA: { type: string }
+                    teamB: { type: string }
                 wicketKeepers:
                   type: object
-                  required: [teamA, teamB]
                   properties:
-                    teamA:
-                      type: string
-                      example: "64f3a3f8f9a93c0012345679"
-                    teamB:
-                      type: string
-                      example: "64f3a3f8f9a93c0012349998"
+                    teamA: { type: string }
+                    teamB: { type: string }
       responses:
-        201:
+        "201":
           description: Match created
-        500:
-          description: Server error
+
+    get:
+      tags: [CricketMatch]
+      summary: Get all cricket matches
+      responses:
+        "200":
+          description: List of matches
 
   /api/cricket-matches/{matchId}:
     get:
-      tags: [CricketMatches]
-      summary: Get a single match by ID
+      tags: [CricketMatch]
+      summary: Get match by ID
       parameters:
         - name: matchId
           in: path
           required: true
-          schema:
-            type: string
-            example: 64efc034f6abc1234567890f
+          schema: { type: string }
       responses:
-        200:
-          description: Match data
-        404:
-          description: Not found
+        "200":
+          description: Match found
 
     patch:
-      tags: [CricketMatches]
-      summary: Update match meta (overs, winner, etc.)
+      tags: [CricketMatch]
+      summary: Update cricket match
       parameters:
         - name: matchId
           in: path
           required: true
-          schema:
-            type: string
+          schema: { type: string }
       requestBody:
-        required: true
         content:
           application/json:
             schema:
               type: object
-              properties:
-                overs:
-                  type: integer
-                winningTeam:
-                  type: string
-                isComplete:
-                  type: boolean
       responses:
-        200:
-          description: Updated match
-        404:
-          description: Not found
+        "200":
+          description: Match updated
 
     delete:
-      tags: [CricketMatches]
-      summary: Delete a cricket match
+      tags: [CricketMatch]
+      summary: Delete cricket match
       parameters:
         - name: matchId
           in: path
           required: true
-          schema:
-            type: string
+          schema: { type: string }
       responses:
-        200:
+        "200":
           description: Match deleted
-        404:
-          description: Not found
 
   /api/cricket-matches/score:
     patch:
-      tags: [CricketMatches]
-      summary: Update score for a player
+      tags: [CricketMatch]
+      summary: Update player score in match
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [matchId, playerId, team]
               properties:
-                matchId:
-                  type: string
-                playerId:
-                  type: string
-                team:
-                  type: string
-                  enum: [A, B]
-                runs:
-                  type: integer
-                wickets:
-                  type: integer
-                ballsFaced:
-                  type: integer
-                oversBowled:
-                  type: number
-                extraBalls:
-                  type: integer
+                matchId: { type: string }
+                playerId: { type: string }
+                team: { type: string, enum: ["A", "B"] }
+                runs: { type: number }
+                wickets: { type: number }
+                ballsFaced: { type: number }
+                oversBowled: { type: number }
+                extraBalls: { type: number }
       responses:
-        200:
-          description: Player score updated
-        404:
-          description: Player or match not found
-        500:
-          description: Internal error
+        "200":
+          description: Score updated
 
   /api/cricket-matches/details/{matchId}:
     get:
-      tags: [CricketMatches]
-      summary: Get detailed match stats with players
+      tags: [CricketMatch]
+      summary: Get full match scorecard
       parameters:
         - name: matchId
           in: path
           required: true
-          schema:
-            type: string
+          schema: { type: string }
       responses:
-        200:
-          description: Detailed match with team + player scores
-        404:
-          description: Match not found
+        "200":
+          description: Full match stats
+
+  /api/cricket-matches/{matchId}/highlight:
+    post:
+      tags: [CricketMatch]
+      summary: Add highlight to match
+      parameters:
+        - name: matchId
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                over: { type: number }
+                ball: { type: number }
+                batsman: { type: string }
+                bowler: { type: string }
+                run: { type: number }
+                isFour: { type: boolean }
+                isSix: { type: boolean }
+                isWicket: { type: boolean }
+                wicketType: 
+                  type: string
+                  enum: [bowled, caught, runout, lbw, hitwicket, stumped, retired]
+                fielder: { type: string }
+                shotDirection: 
+                  type: string
+                  enum: [leg side, off side, cover, mid-wicket, square leg, third man, straight, point, long on, long off]
+                extraType:
+                  type: string
+                  enum: [no ball, wide, bye, leg bye]
+                commentary: { type: string }
+      responses:
+        "201":
+          description: Highlight added

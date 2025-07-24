@@ -21,12 +21,23 @@ const PORT = parseInt(process.env.PORT, 10) || 8000;
     server.listen(PORT, () => {
       logger.info(`Server running at http://localhost:${PORT}`);
 
-      // Keep-alive ping to prevent Render free tier from sleeping
-      setInterval(() => {
-        fetch('https://two025-energy-event-backend.onrender.com/ping')
-          .then(() => logger.info('[Keep-Alive] Ping sent to Render'))
-          .catch(err => logger.error('[Keep-Alive] Ping failed:', err.message));
-      }, 60 * 1000); // every 1 minute
+     setTimeout(() => {
+  setInterval(() => {
+    fetch(`http://localhost:${PORT}/ping`)
+      .then(res => {
+        if (res.ok) {
+          logger.info(`[Keep-Alive] Self-ping OK: ${res.status} ${res.statusText}`);
+        } else {
+          logger.warn(`[Keep-Alive] Self-ping failed: ${res.status} ${res.statusText}`);
+        }
+      })
+      .catch(err => logger.error('[Keep-Alive] Ping error:', err.message));
+  }, 60 * 1000); // Every 1 minute
+}, 10 * 1000); // Delay to ensure server is fully started
+
+
+
+      
     });
   } catch (err) {
     logger.error('Failed to start the server:', err);

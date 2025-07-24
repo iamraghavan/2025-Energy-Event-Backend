@@ -96,6 +96,35 @@ exports.deleteCricketMatch = async (req, res) => {
   }
 };
 
+exports.addHighlight = async (req, res) => {
+  try {
+    const { matchId } = req.params;
+    const highlight = req.body;
+
+    const match = await CricketMatch.findById(matchId);
+    if (!match) return res.status(404).json({ message: 'Match not found' });
+
+    match.highlights.push(highlight);
+    await match.save();
+
+    // 🎯 Emit update to live clients
+    req.app.get('io').emit('highlightAdded', {
+      matchId,
+      highlight
+    });
+
+    res.status(201).json({
+      success: true,
+      message: 'Highlight added',
+      data: highlight
+    });
+  } catch (err) {
+    console.error('[addHighlight]', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
 // PATCH SCORE
 exports.updatePlayerScore = async (req, res) => {
   try {

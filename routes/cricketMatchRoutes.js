@@ -7,9 +7,11 @@ const {
   updateCricketMatch,
   deleteCricketMatch,
   updatePlayerScore,
-  getCricketMatchDetails
+  getCricketMatchDetails,
+  addHighlight
 } = require('../controllers/cricketMatchController');
 
+router.post('/:matchId/highlight', addHighlight);
 router.post('/', createCricketMatch);
 router.get('/', getAllCricketMatches);
 router.get('/:matchId', getCricketMatchById);
