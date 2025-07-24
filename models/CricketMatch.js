@@ -31,7 +31,7 @@ const playerScoreSchema = new mongoose.Schema({
 
 const cricketMatchSchema = new mongoose.Schema({
   fixtureName: { type: String, default: '' },
-  overs: { type: Number, enum: [6, 8, 10], required: true },
+  overs: { type: Number, enum: [2, 6, 8, 10], required: true },
   status: { type: String, enum: ['scheduled', 'live', 'completed'], default: 'scheduled' },
   isComplete: { type: Boolean, default: false },
 
