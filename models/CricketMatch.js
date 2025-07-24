@@ -10,9 +10,17 @@ const highlightSchema = new mongoose.Schema({
   isFour: { type: Boolean, default: false },
   isSix: { type: Boolean, default: false },
   isWicket: { type: Boolean, default: false },
-  wicketType: { type: String, enum: ['bowled', 'caught', 'runout', 'lbw', 'hitwicket', 'stumped', 'retired'], default: null },
+  wicketType: {
+    type: String,
+    enum: ['bowled', 'caught', 'runout', 'lbw', 'hitwicket', 'stumped', 'retired'],
+    default: null
+  },
   fielder: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', default: null },
-  shotDirection: { type: String, enum: ['leg side', 'off side', 'cover', 'mid-wicket', 'square leg', 'third man', 'straight', 'point', 'long on', 'long off'], default: null },
+  shotDirection: {
+    type: String,
+    enum: ['leg side', 'off side', 'cover', 'mid-wicket', 'square leg', 'third man', 'straight', 'point', 'long on', 'long off'],
+    default: null
+  },
   extraType: { type: String, enum: ['no ball', 'wide', 'bye', 'leg bye'], default: null },
   commentary: { type: String }
 }, { _id: false, timestamps: true });
@@ -23,10 +31,27 @@ const playerScoreSchema = new mongoose.Schema({
   isCaptain: { type: Boolean, default: false },
   isWicketKeeper: { type: Boolean, default: false },
   runs: { type: Number, default: 0 },
-  wickets: { type: Number, default: 0 },
   ballsFaced: { type: Number, default: 0 },
+  fours: { type: Number, default: 0 },      // ✅ NEW
+  sixes: { type: Number, default: 0 },      // ✅ NEW
+  strikeRate: { type: Number, default: 0 }, // ✅ NEW
+
+  wickets: { type: Number, default: 0 },
   oversBowled: { type: Number, default: 0 },
+  runsConceded: { type: Number, default: 0 }, // ✅ NEW
+  maidens: { type: Number, default: 0 },      // ✅ NEW
+  economyRate: { type: Number, default: 0 },  // ✅ NEW
   extraBalls: { type: Number, default: 0 }
+}, { _id: false });
+
+// Per-over tracking
+const overSummarySchema = new mongoose.Schema({
+  over: { type: Number, required: true },
+  bowler: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },
+  balls: [highlightSchema], // Full detail of 6 balls
+  runsInOver: { type: Number, default: 0 },
+  wicketsInOver: { type: Number, default: 0 },
+  isMaiden: { type: Boolean, default: false }
 }, { _id: false });
 
 const cricketMatchSchema = new mongoose.Schema({
@@ -54,8 +79,14 @@ const cricketMatchSchema = new mongoose.Schema({
   // Result
   winningTeam: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', default: null },
 
-  // Ball-by-ball
-  highlights: [highlightSchema]
+  // Live status
+  striker: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', default: null },     // ✅ NEW
+  nonStriker: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', default: null }, // ✅ NEW
+  currentBowler: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', default: null }, // ✅ NEW
+
+  // Ball-by-ball + overs summary
+  highlights: [highlightSchema],
+  oversSummary: [overSummarySchema] // ✅ NEW
 }, { timestamps: true });
 
 module.exports = mongoose.model('CricketMatch', cricketMatchSchema);
