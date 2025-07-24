@@ -5,7 +5,7 @@ const Team = require('../models/Team');
 // CREATE match + emit
 exports.createCricketMatch = async (req, res) => {
   try {
-    const { teamAId, teamBId, overs, fixtureName, captains, wicketKeepers } = req.body;
+    const { teamAId, teamBId, overs, fixtureName, captains, wicketKeepers, tossWinner, tossDecision } = req.body;
 
     const teamA = await Team.findOne({ teamId: teamAId });
     const teamB = await Team.findOne({ teamId: teamBId });
@@ -27,7 +27,11 @@ exports.createCricketMatch = async (req, res) => {
       playersA: playersWithMeta(playersA, captains.teamA, wicketKeepers.teamA),
       playersB: playersWithMeta(playersB, captains.teamB, wicketKeepers.teamB),
       overs,
-      fixtureName
+      fixtureName,
+      tossWinner,
+      tossDecision,
+      firstInningsTeam: tossDecision === 'bat' ? tossWinner : (tossWinner.toString() === teamA._id.toString() ? teamB._id : teamA._id),
+      secondInningsTeam: tossDecision === 'bat' ? (tossWinner.toString() === teamA._id.toString() ? teamB._id : teamA._id) : tossWinner
     });
 
     req.app.get('io').emit('matchCreated', match);
@@ -38,27 +42,25 @@ exports.createCricketMatch = async (req, res) => {
   }
 };
 
-// READ ALL
+// GET ALL MATCHES
 exports.getAllCricketMatches = async (req, res) => {
   try {
     const matches = await CricketMatch.find()
       .populate('teamA', 'teamId name')
       .populate('teamB', 'teamId name')
       .sort({ createdAt: -1 });
-
     res.json({ success: true, data: matches });
   } catch (err) {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-// READ ONE
+// GET ONE MATCH
 exports.getCricketMatchById = async (req, res) => {
   try {
     const match = await CricketMatch.findById(req.params.matchId)
       .populate('teamA', 'teamId name')
       .populate('teamB', 'teamId name');
-
     if (!match) return res.status(404).json({ message: 'Match not found' });
     res.json({ success: true, data: match });
   } catch (err) {
@@ -66,16 +68,11 @@ exports.getCricketMatchById = async (req, res) => {
   }
 };
 
-// UPDATE MATCH (PATCH)
+// UPDATE MATCH
 exports.updateCricketMatch = async (req, res) => {
   try {
-    const updated = await CricketMatch.findByIdAndUpdate(
-      req.params.matchId,
-      req.body,
-      { new: true, runValidators: true }
-    );
+    const updated = await CricketMatch.findByIdAndUpdate(req.params.matchId, req.body, { new: true, runValidators: true });
     if (!updated) return res.status(404).json({ message: 'Match not found' });
-
     req.app.get('io').emit('matchUpdated', updated);
     res.json({ success: true, data: updated });
   } catch (err) {
@@ -88,7 +85,6 @@ exports.deleteCricketMatch = async (req, res) => {
   try {
     const deleted = await CricketMatch.findByIdAndDelete(req.params.matchId);
     if (!deleted) return res.status(404).json({ message: 'Match not found' });
-
     req.app.get('io').emit('matchDeleted', { matchId: req.params.matchId });
     res.json({ success: true, message: 'Match deleted' });
   } catch (err) {
@@ -96,51 +92,37 @@ exports.deleteCricketMatch = async (req, res) => {
   }
 };
 
+// ADD HIGHLIGHT
 exports.addHighlight = async (req, res) => {
   try {
     const { matchId } = req.params;
     const highlight = req.body;
-
     const match = await CricketMatch.findById(matchId);
     if (!match) return res.status(404).json({ message: 'Match not found' });
 
     match.highlights.push(highlight);
     await match.save();
 
-    // 🎯 Emit update to live clients
-    req.app.get('io').emit('highlightAdded', {
-      matchId,
-      highlight
-    });
-
-    res.status(201).json({
-      success: true,
-      message: 'Highlight added',
-      data: highlight
-    });
+    req.app.get('io').emit('highlightAdded', { matchId, highlight });
+    res.status(201).json({ success: true, data: highlight });
   } catch (err) {
     console.error('[addHighlight]', err);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-
-// PATCH SCORE
+// UPDATE PLAYER SCORE
 exports.updatePlayerScore = async (req, res) => {
   try {
-    const {
-      matchId, playerId, team, runs, wickets, ballsFaced, oversBowled, extraBalls = 0
-    } = req.body;
-
-    if (!['A', 'B'].includes(team))
-      return res.status(400).json({ message: 'Team must be A or B' });
+    const { matchId, playerId, team, runs, wickets, ballsFaced, oversBowled, extraBalls = 0 } = req.body;
+    if (!['A', 'B'].includes(team)) return res.status(400).json({ message: 'Invalid team indicator' });
 
     const match = await CricketMatch.findById(matchId);
     if (!match) return res.status(404).json({ message: 'Match not found' });
 
     const playerArray = team === 'A' ? match.playersA : match.playersB;
     const score = playerArray.find(p => p.player.toString() === playerId);
-    if (!score) return res.status(404).json({ message: 'Player not in match' });
+    if (!score) return res.status(404).json({ message: 'Player not found' });
 
     const delta = {
       runs: (runs ?? score.runs) - score.runs,
@@ -153,19 +135,13 @@ exports.updatePlayerScore = async (req, res) => {
     if (oversBowled != null) score.oversBowled = oversBowled;
     score.extraBalls = extraBalls;
 
-    const strikeRate = (score.ballsFaced > 0)
-      ? ((score.runs / score.ballsFaced) * 100).toFixed(2)
-      : '0.00';
-
-    const economyRate = (score.oversBowled > 0)
-      ? (score.runs / score.oversBowled).toFixed(2)
-      : '0.00';
+    const strikeRate = (score.ballsFaced > 0) ? ((score.runs / score.ballsFaced) * 100).toFixed(2) : '0.00';
+    const economyRate = (score.oversBowled > 0) ? (score.runs / score.oversBowled).toFixed(2) : '0.00';
 
     const totalRuns = playerArray.reduce((sum, p) => sum + (p.runs || 0), 0);
     const totalWickets = playerArray.reduce((sum, p) => sum + (p.wickets || 0), 0);
     const ballsUsed = playerArray.reduce((sum, p) => sum + (p.ballsFaced || 0), 0);
     const extraBallsUsed = playerArray.reduce((sum, p) => sum + (p.extraBalls || 0), 0);
-
     const totalBalls = match.overs * 6;
     const ballsLeft = totalBalls - ballsUsed;
 
@@ -175,11 +151,7 @@ exports.updatePlayerScore = async (req, res) => {
       matchId,
       playerId,
       team,
-      updatedScore: {
-        ...score.toObject(),
-        strikeRate,
-        economyRate
-      },
+      updatedScore: { ...score.toObject(), strikeRate, economyRate },
       delta,
       teamStats: {
         totalRuns,
@@ -208,15 +180,12 @@ exports.updatePlayerScore = async (req, res) => {
   }
 };
 
-// GET FULL MATCH STATS
+// GET FULL DETAILS
 exports.getCricketMatchDetails = async (req, res) => {
   try {
     const match = await CricketMatch.findById(req.params.matchId)
-      .populate('teamA', 'teamId name')
-      .populate('teamB', 'teamId name')
-      .populate('winningTeam', 'teamId name')
-      .populate('playersA.player', 'name jerseyNumber role')
-      .populate('playersB.player', 'name jerseyNumber role');
+      .populate('teamA teamB winningTeam tossWinner firstInningsTeam secondInningsTeam', 'teamId name')
+      .populate('playersA.player playersB.player', 'name jerseyNumber role');
 
     if (!match) return res.status(404).json({ message: 'Match not found' });
 
@@ -235,19 +204,13 @@ exports.getCricketMatchDetails = async (req, res) => {
     res.json({
       success: true,
       match: {
-        _id: match._id,
-        overs: match.overs,
-        fixtureName: match.fixtureName,
-        isComplete: match.isComplete,
-        teamA: match.teamA,
-        teamB: match.teamB,
-        winningTeam: match.winningTeam || null,
+        ...match.toObject(),
         stats: {
           teamA: statsA,
-          teamB: statsB
-        },
-        playersA: match.playersA,
-        playersB: match.playersB
+          teamB: statsB,
+          currentRunRate: (statsA.totalRuns / (statsA.oversUsed || 1)).toFixed(2),
+          requiredRunRate: match.target ? ((match.target - statsB.totalRuns) / (match.overs - statsB.oversUsed)).toFixed(2) : null
+        }
       }
     });
   } catch (err) {

@@ -11,7 +11,6 @@ const {
   addHighlight
 } = require('../controllers/cricketMatchController');
 
-router.post('/:matchId/highlight', addHighlight);
 router.post('/', createCricketMatch);
 router.get('/', getAllCricketMatches);
 router.get('/:matchId', getCricketMatchById);
@@ -20,5 +19,6 @@ router.delete('/:matchId', deleteCricketMatch);
 
 router.patch('/score', updatePlayerScore);
 router.get('/details/:matchId', getCricketMatchDetails);
+router.post('/:matchId/highlight', addHighlight);
 
 module.exports = router;

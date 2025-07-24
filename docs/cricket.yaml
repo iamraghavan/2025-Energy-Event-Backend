@@ -1,163 +1,245 @@
 openapi: 3.0.0
 info:
-  title: Cricket Match API
+  title: Cricket API
   version: 1.0.0
-  description: API for managing cricket matches, scores, and highlights.
+  description: |
+    API for managing a global screen layout divided into 4 quadrants.
+    - Stores one layout document in MongoDB.
+    - Emits real-time updates using Socket.IO on layout changes.
+
+servers:
+  - url: /api
+    description: Base API path
 
 tags:
-  - name: CricketMatch
-    description: Endpoints related to cricket matches
+  - name: Cricket Match
+    description: Endpoints for getting and updating screen layout
 
 paths:
-  /api/cricket-matches:
+  /:
     post:
-      tags: [CricketMatch]
       summary: Create a new cricket match
+      tags: [CricketMatch]
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              required:
+                [
+                  teamAId,
+                  teamBId,
+                  overs,
+                  fixtureName,
+                  captains,
+                  wicketKeepers,
+                  tossWinner,
+                  tossDecision,
+                ]
               properties:
-                teamAId: { type: string }
-                teamBId: { type: string }
-                overs: { type: integer, enum: [6, 8, 10] }
-                fixtureName: { type: string }
+                teamAId:
+                  type: string
+                teamBId:
+                  type: string
+                overs:
+                  type: integer
+                  enum: [6, 8, 10]
+                fixtureName:
+                  type: string
                 captains:
                   type: object
                   properties:
-                    teamA: { type: string }
-                    teamB: { type: string }
+                    teamA:
+                      type: string
+                    teamB:
+                      type: string
                 wicketKeepers:
                   type: object
                   properties:
-                    teamA: { type: string }
-                    teamB: { type: string }
+                    teamA:
+                      type: string
+                    teamB:
+                      type: string
+                tossWinner:
+                  type: string
+                tossDecision:
+                  type: string
+                  enum: [bat, bowl]
       responses:
-        "201":
+        201:
           description: Match created
 
     get:
+      summary: Get all matches
       tags: [CricketMatch]
-      summary: Get all cricket matches
       responses:
-        "200":
-          description: List of matches
+        200:
+          description: A list of matches
 
-  /api/cricket-matches/{matchId}:
+  /{matchId}:
     get:
+      summary: Get a single match by ID
       tags: [CricketMatch]
-      summary: Get match by ID
       parameters:
-        - name: matchId
-          in: path
+        - in: path
+          name: matchId
           required: true
-          schema: { type: string }
+          schema:
+            type: string
       responses:
-        "200":
+        200:
           description: Match found
 
     patch:
+      summary: Update a match
       tags: [CricketMatch]
-      summary: Update cricket match
       parameters:
-        - name: matchId
-          in: path
+        - in: path
+          name: matchId
           required: true
-          schema: { type: string }
+          schema:
+            type: string
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
       responses:
-        "200":
+        200:
           description: Match updated
 
     delete:
+      summary: Delete a match
       tags: [CricketMatch]
-      summary: Delete cricket match
       parameters:
-        - name: matchId
-          in: path
+        - in: path
+          name: matchId
           required: true
-          schema: { type: string }
+          schema:
+            type: string
       responses:
-        "200":
+        200:
           description: Match deleted
 
-  /api/cricket-matches/score:
+  /score:
     patch:
+      summary: Update a player score in a match
       tags: [CricketMatch]
-      summary: Update player score in match
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              required: [matchId, playerId, team]
               properties:
-                matchId: { type: string }
-                playerId: { type: string }
-                team: { type: string, enum: ["A", "B"] }
-                runs: { type: number }
-                wickets: { type: number }
-                ballsFaced: { type: number }
-                oversBowled: { type: number }
-                extraBalls: { type: number }
+                matchId:
+                  type: string
+                playerId:
+                  type: string
+                team:
+                  type: string
+                  enum: [A, B]
+                runs:
+                  type: integer
+                wickets:
+                  type: integer
+                ballsFaced:
+                  type: integer
+                oversBowled:
+                  type: number
+                extraBalls:
+                  type: integer
       responses:
-        "200":
+        200:
           description: Score updated
 
-  /api/cricket-matches/details/{matchId}:
+  /details/{matchId}:
     get:
+      summary: Get full stats of a match
       tags: [CricketMatch]
-      summary: Get full match scorecard
       parameters:
-        - name: matchId
-          in: path
+        - in: path
+          name: matchId
           required: true
-          schema: { type: string }
+          schema:
+            type: string
       responses:
-        "200":
-          description: Full match stats
+        200:
+          description: Match stats returned
 
-  /api/cricket-matches/{matchId}/highlight:
+  /{matchId}/highlight:
     post:
+      summary: Add a highlight to a match
       tags: [CricketMatch]
-      summary: Add highlight to match
       parameters:
-        - name: matchId
-          in: path
+        - in: path
+          name: matchId
           required: true
-          schema: { type: string }
+          schema:
+            type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              required: [over, ball, batsman, bowler]
               properties:
-                over: { type: number }
-                ball: { type: number }
-                batsman: { type: string }
-                bowler: { type: string }
-                run: { type: number }
-                isFour: { type: boolean }
-                isSix: { type: boolean }
-                isWicket: { type: boolean }
-                wicketType: 
+                over:
+                  type: integer
+                ball:
+                  type: integer
+                batsman:
                   type: string
-                  enum: [bowled, caught, runout, lbw, hitwicket, stumped, retired]
-                fielder: { type: string }
-                shotDirection: 
+                bowler:
                   type: string
-                  enum: [leg side, off side, cover, mid-wicket, square leg, third man, straight, point, long on, long off]
+                run:
+                  type: integer
+                isFour:
+                  type: boolean
+                isSix:
+                  type: boolean
+                isWicket:
+                  type: boolean
+                wicketType:
+                  type: string
+                  enum:
+                    [bowled, caught, runout, lbw, hitwicket, stumped, retired]
+                fielder:
+                  type: string
+                shotDirection:
+                  type: string
+                  enum:
+                    [
+                      leg side,
+                      off side,
+                      cover,
+                      mid-wicket,
+                      square leg,
+                      third man,
+                      straight,
+                      point,
+                      long on,
+                      long off,
+                    ]
                 extraType:
                   type: string
                   enum: [no ball, wide, bye, leg bye]
-                commentary: { type: string }
+                commentary:
+                  type: string
       responses:
-        "201":
+        201:
           description: Highlight added
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+
+security:
+  - ApiKeyAuth: []
