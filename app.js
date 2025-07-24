@@ -27,6 +27,10 @@ app.use(express.json({ limit: '10kb' }));
 app.use(morgan('dev'));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// 🩺 Health check for keep-alive pings
+app.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+});
 
 // 🔒 Secure: check API key before protected endpoints
 app.use(apiKeyAuth);
@@ -44,10 +48,7 @@ app.use('/api/layout', layoutRoutes);
 app.use('/api/players', playerRoutes);
 app.use('/api/cricket-matches', cricketMatchRoutes);
 
-// 🩺 Health check for keep-alive pings
-app.get('/ping', (req, res) => {
-  res.status(200).send('pong');
-});
+
 
 app.use(errorHandler);
 
